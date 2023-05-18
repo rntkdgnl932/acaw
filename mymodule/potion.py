@@ -470,8 +470,9 @@ def buy_potion(cla):
                                             line_to_me(cla, "돈 없어서 보석 상점 와있다")
 
                                     else:
-                                        click_pos_2(415, 945, cla)
-                                        time.sleep(0.5)
+                                        for i in range(3):
+                                            click_pos_2(415, 945, cla)
+                                            time.sleep(0.3)
                                         click_pos_2(865, 995, cla)
                                     time.sleep(1)
 
@@ -539,8 +540,6 @@ def buy_potion(cla):
                             if imgs_ is not None and imgs_ != False:
                                 print("soongan.......", imgs_)
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
-                                time.sleep(0.5)
-                                click_pos_2(320, 945, cla)
                                 time.sleep(0.5)
                                 click_pos_2(320, 945, cla)
                                 time.sleep(0.5)
