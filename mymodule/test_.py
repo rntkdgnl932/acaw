@@ -32,19 +32,7 @@ def go_test():
 
     # grow_jangbi_check(cla)
 
-    full_path = "c:\\acaw\\my_acaw\\imgs\\get_item\\boonhae_title.PNG"
-    img_array = np.fromfile(full_path, np.uint8)
-    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(690, 310, 760, 360, cla, img, 0.8)
-    if imgs_ is not None and imgs_ != False:
-        print("boonhae_title", imgs_)
 
-        full_path = "c:\\acaw\\my_acaw\\imgs\\get_item\\daily_confirm_1.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(480, 600, 660, 660, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("daily_confirm_1", imgs_)
 
 
     # potion_ = text_check_get(750, 482, 785, 495, cla)

@@ -110,6 +110,16 @@ def go_quest_ing(cla):
             imgs_ = imgs_set_(640, 70, 690, 120, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 print("go_quest", imgs_)
+                full_path = "c:\\acaw\\my_acaw\\imgs\\check\\lv_point.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(47, 30, 70, 50, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("lv_point", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    time.sleep(1)
+                    click_pos_2(195, 990, cla)
+                    tuto_status(cla)
                 ing_ = True
             else:
                 if ing_count < 2:
@@ -221,7 +231,7 @@ def tuto_status(cla):
             is_stat_count = 0
             while is_stat_ is False:
                 is_stat_count += 1
-                if is_stat_count > 10:
+                if is_stat_count > 5:
                     is_stat_ = True
                 full_path = "c:\\acaw\\my_acaw\\imgs\\tuto\\tuto_status_2.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
