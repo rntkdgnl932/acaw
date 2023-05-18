@@ -2378,6 +2378,8 @@ class game_Playing(QThread):
                     print("result_schedule", result_schedule)
                     result_schedule_ = result_schedule[0][2]
 
+                    v_.now_ing_schedule = result_schedule_
+
                     if "_" in result_schedule_:
                         result_sch = result_schedule_.split("_")
                         if result_sch[0] == "사냥":
