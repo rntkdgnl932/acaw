@@ -22,6 +22,7 @@ def dead_die_start(cla, data):
                 if v_.tuto_die_count > 4:
                     myQuest_play_add(cla, data)
                 boohwal(cla, data)
+                buy_potion(cla)
             else:
                 buy_potion(cla)
                 boohwal(cla, data)
