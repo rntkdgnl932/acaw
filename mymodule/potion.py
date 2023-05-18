@@ -542,6 +542,8 @@ def buy_potion(cla):
                                 time.sleep(0.5)
                                 click_pos_2(320, 945, cla)
                                 time.sleep(0.5)
+                                click_pos_2(320, 945, cla)
+                                time.sleep(0.5)
                                 click_pos_2(865, 995, cla)
                                 time.sleep(0.5)
                             time.sleep(0.3)
