@@ -11,12 +11,20 @@ import variable as v_
 def dead_die_start(cla, data):
     try:
         from potion import buy_potion
+        from schedule import myQuest_play_add
 
         print("dead_die")
         result_die = is_die(cla)
         if result_die == True:
-            buy_potion(cla)
-            boohwal(cla, data)
+            if data == "튜토육성":
+                v_.tuto_die_count += 1
+                print("v_.tuto_die_count", v_.tuto_die_count)
+                if v_.tuto_die_count > 4:
+                    myQuest_play_add(cla, data)
+                boohwal(cla, data)
+            else:
+                buy_potion(cla)
+                boohwal(cla, data)
 
 
 

@@ -18,6 +18,7 @@ def tuto_start(cla, data):
         dead_die_start(cla, data)
         #설명하는 것들
         print("설명하는 것들")
+        tuto_first(cla)
         tuto_quest_moglog(cla)
         tuto_bag_touch(cla)
         tuto_camera_setting(cla)
@@ -240,6 +241,23 @@ def tuto_status(cla):
         return 0
 
 ######################### 튜 토 리 얼 #########################################################
+
+def tuto_first(cla):
+    try:
+        import cv2
+        import numpy as np
+        from function import click_pos_reg, imgs_set_, click_pos_2
+        full_path = "c:\\acaw\\my_acaw\\imgs\\tuto\\tuto_first_2.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(400, 300, 560, 350, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("tuto_quest_moglog_1", imgs_)
+            click_pos_2(505, 270, cla)
+
+    except Exception as e:
+        print(e)
+        return 0
 
 def tuto_quest_moglog(cla):
     try:
@@ -649,7 +667,7 @@ def tuto_groa(cla):
             click_pos_reg(imgs_.x, imgs_.y, cla)
 
             print("튜툐 끝?")
-            myQuest_play_add(cla, "튜토육성")
+            # myQuest_play_add(cla, "튜토육성")
 
 
     except Exception as e:

@@ -52,6 +52,8 @@ onCollection = False
 just_one = False
 
 # 아키
+tuto_die_count = 0
+
 potion_search_count = 0
 potion_result = "none"
 
