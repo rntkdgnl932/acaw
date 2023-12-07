@@ -19,7 +19,7 @@ def dead_die_start(cla, data):
             if data == "튜토육성":
                 v_.tuto_die_count += 1
                 print("v_.tuto_die_count", v_.tuto_die_count)
-                if v_.tuto_die_count > 1:
+                if v_.tuto_die_count > 0:
                     myQuest_play_add(cla, data)
                 boohwal(cla, data)
                 buy_potion(cla)
