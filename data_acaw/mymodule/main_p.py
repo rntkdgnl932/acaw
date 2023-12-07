@@ -49,6 +49,8 @@ from tuto_acaw import tuto_start
 from jadong_acaw import jadong_start
 from get_item import get_item_start
 
+from dead_die import dead_die_start
+
 
 from stop_event18 import _stop_please
 
@@ -3224,7 +3226,7 @@ class game_Playing(QThread):
 
 
                                 # 죽었는지 파악
-                                # dead_die(v_.now_cla, result_schedule_)
+                                dead_die_start(v_.now_cla, result_schedule_)
 
 
 
