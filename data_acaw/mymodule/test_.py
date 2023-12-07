@@ -15,11 +15,12 @@ def go_test():
     import pyautogui
     import random
 
-    from function_acaw import imgs_set_
+    from function_acaw import imgs_set_, click_pos_reg
     from dead_die import boohwal
-    from action import out_check
+    from action import out_check, clean_screen, juljun_off, juljun_on, auto_on
     from potion import buy_potion, maul_move_check, soongan_move_check, my_potion_check
     from get_item import set_collection, boonhae, get_post, daily_check
+    from jadong_acaw import jadong_in_spot_go, jadong_start
 
 
     print("test")
@@ -37,7 +38,62 @@ def go_test():
     elif cla == "four":
         plus = 960 * 3
 
-    my_potion_check(cla)
+    # for i in range(15):
+    #     full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\worldmap_up.PNG"
+    #     img_array = np.fromfile(full_path, np.uint8)
+    #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    #     imgs_ = imgs_set_(200, 100, 280, 1040, cla, img, 0.7)
+    #     if imgs_ is not None and imgs_ != False:
+    #         print("worldmap_up", imgs_)
+    #         click_pos_reg(imgs_.x, imgs_.y, cla)
+    #     else:
+    #         break
+    #     time.sleep(0.5)
+
+    # jadong_start(cla, "자동_송별의뜰")
+
+
+    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\juljun_small_potion_zero.PNG"
+    img_array = np.fromfile(full_path, np.uint8)
+    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    imgs_ = imgs_set_(400, 950, 600, 1030, cla, img, 0.9)
+    if imgs_ is not None and imgs_ != False:
+        print("juljun_small_potion_zero", imgs_)
+
+    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\juljun_middle_potion_zero.PNG"
+    img_array = np.fromfile(full_path, np.uint8)
+    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    imgs_ = imgs_set_(400, 950, 600, 1030, cla, img, 0.9)
+    if imgs_ is not None and imgs_ != False:
+        print("juljun_middle_potion_zero", imgs_)
+
+    # full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\auto_on.PNG"
+    # img_array = np.fromfile(full_path, np.uint8)
+    # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    # imgs_ = imgs_set_(850, 900, 940, 940, cla, img, 0.9)
+    # if imgs_ is not None and imgs_ != False:
+    #     print("auto_on", imgs_)
+    #
+    # full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\auto_off.PNG"
+    # img_array = np.fromfile(full_path, np.uint8)
+    # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    # imgs_ = imgs_set_(850, 900, 940, 940, cla, img, 0.9)
+    # if imgs_ is not None and imgs_ != False:
+    #     print("auto_off", imgs_)
+    #
+    # full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\out_small_potion.PNG"
+    # img_array = np.fromfile(full_path, np.uint8)
+    # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    # imgs_ = imgs_set_(460, 950, 500, 1005, cla, img, 0.8)
+    # if imgs_ is not None and imgs_ != False:
+    #     print("out_small_potion", imgs_)
+    #
+    # full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\out_middle_potion.PNG"
+    # img_array = np.fromfile(full_path, np.uint8)
+    # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    # imgs_ = imgs_set_(460, 950, 500, 1005, cla, img, 0.8)
+    # if imgs_ is not None and imgs_ != False:
+    #     print("out_middle_potion", imgs_)
 
     # full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\dead_die\\list_have_1.PNG"
     # img_array = np.fromfile(full_path, np.uint8)

@@ -190,16 +190,38 @@ def my_potion_check(cla):
         import cv2
         import numpy as np
         from function_acaw import click_pos_reg, imgs_set_, text_check_get, click_pos_2, drag_pos, in_number_check, int_put_, change_number
-        from action import clean_screen, out_check
+        from action import clean_screen, out_check, juljun_off
 
-        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\out_small_potion.PNG"
+        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\juljun\\juljun_ing.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(460, 950, 500, 1005, cla, img, 0.8)
+        imgs_ = imgs_set_(400, 400, 600, 600, cla, img, 0.7)
         if imgs_ is not None and imgs_ != False:
-            v_.my_potion_check = 0
-            print("out_small_potion", imgs_)
+            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\juljun_small_potion_zero.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(400, 950, 600, 1030, cla, img, 0.9)
+            if imgs_ is not None and imgs_ != False:
+                v_.my_potion_check += 1
+                print("juljun_small_potion_zero", imgs_)
+            else:
+                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\juljun_middle_potion_zero.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(400, 950, 600, 1030, cla, img, 0.9)
+                if imgs_ is not None and imgs_ != False:
+                    v_.my_potion_check += 1
+                    print("juljun_middle_potion_zero", imgs_)
+                else:
+                    v_.my_potion_check = 0
+                    print("포션 있다", v_.my_potion_check)
+            if v_.my_potion_check > 3:
+
+                juljun_off(cla)
+
+                buy_potion(cla)
         else:
+
             full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\out_small_potion.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -208,10 +230,18 @@ def my_potion_check(cla):
                 v_.my_potion_check = 0
                 print("out_small_potion", imgs_)
             else:
-                v_.my_potion_check += 1
-                print("포션 없다", v_.my_potion_check)
-                if v_.my_potion_check > 3:
-                    buy_potion(cla)
+                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\out_middle_potion.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(460, 950, 500, 1005, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    v_.my_potion_check = 0
+                    print("out_middle_potion", imgs_)
+                else:
+                    v_.my_potion_check += 1
+                    print("포션 없다", v_.my_potion_check)
+                    if v_.my_potion_check > 3:
+                        buy_potion(cla)
 
 
 
@@ -219,6 +249,7 @@ def my_potion_check(cla):
     except Exception as e:
         print(e)
         return 0
+
 
 
 def maul_move_check(cla):
@@ -231,7 +262,7 @@ def maul_move_check(cla):
         full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\common_grow\\maul_move_check.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(220, 940, 290, 1010, cla, img, 0.8)
+        imgs_ = imgs_set_(330, 940, 400, 1010, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
             print("마을 이동서 있다.")
         else:
@@ -258,7 +289,7 @@ def maul_move_check(cla):
                     print("마을 이동서 있다.")
                     click_pos_reg(imgs_.x, imgs_.y, cla)
                     time.sleep(0.5)
-                    click_pos_2(250, 975, cla)
+                    click_pos_2(370, 980, cla)
                     search_maul_move = True
                 else:
                     drag_pos(820, 640, 820, 460, cla)
@@ -472,9 +503,9 @@ def buy_potion(cla):
                         full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\common_grow\\maul_move_check.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(220, 940, 290, 1010, cla, img, 0.8)
+                        imgs_ = imgs_set_(330, 940, 400, 1010, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
-                            click_pos_2(255, 980, cla)
+                            click_pos_2(370, 980, cla)
                         else:
                             maul_move_check(cla)
 
@@ -515,106 +546,118 @@ def buy_potion(cla):
                             click_pos_reg(imgs_.x + 100, imgs_.y, cla)
                             time.sleep(0.5)
 
-                            if v_.now_ing_schedule != "튜토육성":
 
-                                per_count = 0
-                                click_count = 0
-                                per_ready = False
-                                while per_ready is False:
-                                    for i in range(3):
-                                        potion_per = text_check_get(331 - i, 975, 390, 990, cla)
-                                        print("potion_per?", potion_per)
-                                        buy_ready = in_number_check(potion_per)
-                                        if buy_ready == True:
-                                            break
-                                    if buy_ready == True:
-                                        buy_per_ready = change_number(potion_per)
-                                        print("buy_per_ready", buy_per_ready)
-                                        print("buy_per_ready[0]", buy_per_ready[0])
-                                        if int(buy_per_ready[0]) >= 7:
-                                            click_count = per_count - 1
-                                            print("click_count", click_count)
-                                            # per_ready = True
-                                            click_pos_2(300, 880, cla)
-                                            time.sleep(0.2)
-
-                                            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\jabhwa_small_potion.PNG"
-                                            img_array = np.fromfile(full_path, np.uint8)
-                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                            imgs_ = imgs_set_(0, 140, 240, 970, cla, img, 0.8)
-                                            if imgs_ is not None and imgs_ != False:
-                                                print("jabhwa_small_potion.......", imgs_)
-                                                x_reg = imgs_.x + 100
-                                                y_reg = imgs_.y
-                                                # click_pos_reg(imgs_.x + 100, imgs_.y, cla)
-                                                time.sleep(0.5)
-                                                isJabhwa = True
-                                                per_ready = True
-                                                if click_count > 0:
-
-                                                    last_buy = False
-                                                    last_buy_count = 0
-                                                    while last_buy is False:
-                                                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\jab_confirm.PNG"
-                                                        img_array = np.fromfile(full_path, np.uint8)
-                                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                                        imgs_ = imgs_set_(480, 600, 650, 650, cla, img, 0.8)
-                                                        if imgs_ is not None and imgs_ != False:
-                                                            print("jab_confirm", imgs_)
-                                                            click_pos_reg(imgs_.x, imgs_.y, cla)
-                                                            last_buy = True
-                                                        else:
-                                                            last_buy_count += 1
-                                                            if last_buy_count > 3:
-                                                                last_buy = True
-                                                                line_to_me(cla, "물약 사는데 문제 있다ㅠ")
-                                                                clean_screen(cla)
-                                                            click_pos_2(x_reg, y_reg, cla)
-                                                            time.sleep(0.3)
-                                                            for i in range(click_count):
-                                                                click_pos_2(415, 945, cla)
-                                                                time.sleep(0.2)
-                                                            click_pos_2(865, 995, cla)
-                                                            time.sleep(0.5)
-                                                        time.sleep(0.5)
-                                        else:
-                                            per_count += 1
-                                            click_pos_2(415, 945, cla)
-                                            time.sleep(0.5)
-                                        time.sleep(0.5)
-                            else:
-                                last_buy = False
-                                last_buy_count = 0
-                                while last_buy is False:
-                                    last_buy_count += 1
-                                    if last_buy_count > 3:
-                                        last_buy = True
-                                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\jab_confirm.PNG"
-                                    img_array = np.fromfile(full_path, np.uint8)
-                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(480, 600, 650, 650, cla, img, 0.8)
-                                    if imgs_ is not None and imgs_ != False:
-                                        print("jab_confirm", imgs_)
-                                        isJabhwa = True
-                                        click_pos_reg(imgs_.x, imgs_.y, cla)
-                                        last_buy = True
-                                        time.sleep(2)
-                                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\jab_confirm.PNG"
-                                        img_array = np.fromfile(full_path, np.uint8)
-                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                        imgs_ = imgs_set_(810, 30, 900, 90, cla, img, 0.8)
-                                        if imgs_ is not None and imgs_ != False:
-                                            line_to_me(cla, "돈 없어서 보석 상점 와있다")
-
-                                    else:
-                                        for i in range(3):
-                                            click_pos_2(415, 945, cla)
-                                            time.sleep(0.3)
-                                        click_pos_2(865, 995, cla)
-                                    time.sleep(1)
 
                     else:
                         print("40레벨 포션 구매하기")
+
+                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\jabhwa_middle_potion.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(0, 140, 240, 970, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("jabhwa_middle_potion", imgs_)
+                            click_pos_reg(imgs_.x + 100, imgs_.y, cla)
+                            time.sleep(0.5)
+
+                    if v_.now_ing_schedule != "튜토육성":
+
+                        per_count = 0
+                        click_count = 0
+                        per_ready = False
+                        while per_ready is False:
+                            for i in range(3):
+                                potion_per = text_check_get(331 - i, 975, 390, 990, cla)
+                                print("potion_per?", potion_per)
+                                buy_ready = in_number_check(potion_per)
+                                if buy_ready == True:
+                                    break
+                                time.sleep(0.2)
+                            if buy_ready == True:
+                                buy_per_ready = change_number(potion_per)
+                                print("buy_per_ready", buy_per_ready)
+                                print("buy_per_ready[0]", buy_per_ready[0])
+                                if int(buy_per_ready[0]) >= 7:
+                                    click_count = per_count - 1
+                                    print("click_count", click_count)
+                                    # per_ready = True
+                                    click_pos_2(300, 880, cla)
+                                    time.sleep(0.2)
+
+                                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\jabhwa_small_potion.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(0, 140, 240, 970, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("jabhwa_small_potion.......", imgs_)
+                                        x_reg = imgs_.x + 100
+                                        y_reg = imgs_.y
+                                        # click_pos_reg(imgs_.x + 100, imgs_.y, cla)
+                                        time.sleep(0.5)
+                                        isJabhwa = True
+                                        per_ready = True
+                                        if click_count > 0:
+
+                                            last_buy = False
+                                            last_buy_count = 0
+                                            while last_buy is False:
+                                                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\jab_confirm.PNG"
+                                                img_array = np.fromfile(full_path, np.uint8)
+                                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                imgs_ = imgs_set_(480, 600, 650, 650, cla, img, 0.8)
+                                                if imgs_ is not None and imgs_ != False:
+                                                    print("jab_confirm", imgs_)
+                                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                                    last_buy = True
+                                                else:
+                                                    last_buy_count += 1
+                                                    if last_buy_count > 3:
+                                                        last_buy = True
+                                                        line_to_me(cla, "물약 사는데 문제 있다ㅠ")
+                                                        clean_screen(cla)
+                                                    click_pos_2(x_reg, y_reg, cla)
+                                                    time.sleep(0.3)
+                                                    for i in range(click_count):
+                                                        click_pos_2(415, 945, cla)
+                                                        time.sleep(0.2)
+                                                    click_pos_2(865, 995, cla)
+                                                    time.sleep(0.5)
+                                                time.sleep(0.5)
+                                else:
+                                    per_count += 1
+                                    click_pos_2(415, 945, cla)
+                                    time.sleep(0.5)
+                                time.sleep(0.5)
+                    else:
+                        last_buy = False
+                        last_buy_count = 0
+                        while last_buy is False:
+                            last_buy_count += 1
+                            if last_buy_count > 3:
+                                last_buy = True
+                            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\jab_confirm.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(480, 600, 650, 650, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("jab_confirm", imgs_)
+                                isJabhwa = True
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                last_buy = True
+                                time.sleep(2)
+                                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\jab_confirm.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(810, 30, 900, 90, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    line_to_me(cla, "돈 없어서 보석 상점 와있다")
+
+                            else:
+                                for i in range(3):
+                                    click_pos_2(415, 945, cla)
+                                    time.sleep(0.3)
+                                click_pos_2(865, 995, cla)
+                            time.sleep(1)
 
                     full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\jab_confirm.PNG"
                     img_array = np.fromfile(full_path, np.uint8)

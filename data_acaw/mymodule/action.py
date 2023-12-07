@@ -21,10 +21,18 @@ def welcome_to_action(cla):
 
 
 def clean_screen(cla):
+    import cv2
+    import numpy as np
+    from function_acaw import click_pos_reg, imgs_set_, click_pos_2
     try:
-        import cv2
-        import numpy as np
-        from function_acaw import click_pos_reg, imgs_set_, click_pos_2
+        if cla == "one":
+            plus = 0
+        elif cla == "two":
+            plus = 960
+        elif cla == "three":
+            plus = 960 * 2
+        elif cla == "four":
+            plus = 960 * 3
 
         clean_ = False
         clean_count = 0
@@ -32,6 +40,24 @@ def clean_screen(cla):
             clean_count += 1
             if clean_count > 5:
                 clean_ = True
+
+            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\clean_screen\\close_to_potion.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(0, 30, 960, 1040, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+
+                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\clean_screen\\close_to_potion.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                for i in pyautogui.locateAllOnScreen(img, region=(0 + plus, 30, 960, 1040), confidence=0.8):
+                    last_x = i.left
+                    last_y = i.top
+                    print("last_x", last_x)
+                    print("last_y", last_y)
+                    click_pos_reg(last_x, last_y, cla)
+                    time.sleep(0.3)
+
 
             result_out = out_check(cla)
             if result_out == True:
@@ -226,6 +252,122 @@ def bag_open(cla):
                 time.sleep(0.5)
                 click_pos_2(770, 60, cla)
                 time.sleep(0.5)
+    except Exception as e:
+        print(e)
+        return 0
+
+
+def juljun_on(cla):
+    import cv2
+    import numpy as np
+    from function_acaw import imgs_set_, click_pos_2, drag_pos
+    try:
+
+        juljun_ = False
+        juljun_count = 0
+        while juljun_ is False:
+            juljun_count += 1
+            if juljun_count > 7:
+                juljun_ = True
+
+            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\juljun\\juljun_ing.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(400, 400, 600, 600, cla, img, 0.7)
+            if imgs_ is not None and imgs_ != False:
+                print("juljun_ing", imgs_)
+                juljun_ = True
+            else:
+                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\title\\title_juljun.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(750, 30, 900, 90, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    drag_pos(480, 480, 800, 480, cla)
+                    for i in range(10):
+                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\juljun\\juljun_ing.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(400, 400, 600, 600, cla, img, 0.7)
+                        if imgs_ is not None and imgs_ != False:
+                            break
+                        time.sleep(0.2)
+
+                else:
+                    clean_screen(cla)
+                    click_pos_2(45, 990, cla)
+            time.sleep(0.5)
+
+    except Exception as e:
+        print(e)
+        return 0
+
+
+def juljun_off(cla):
+    import cv2
+    import numpy as np
+    from function_acaw import imgs_set_, drag_pos
+
+    try:
+        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\juljun\\juljun_ing.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(400, 400, 600, 600, cla, img, 0.7)
+        if imgs_ is not None and imgs_ != False:
+
+
+            juljun_ = False
+            juljun_count = 0
+            while juljun_ is False:
+                juljun_count += 1
+                if juljun_count > 7:
+                    juljun_ = True
+
+                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\juljun\\juljun_ing.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(400, 400, 600, 600, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    drag_pos(480, 520, 800, 520, cla)
+                else:
+                    result_out = out_check(cla)
+                    if result_out == True:
+                        juljun_ = True
+
+                time.sleep(0.5)
+
+    except Exception as e:
+        print(e)
+        return 0
+
+def auto_on(cla):
+    import cv2
+    import numpy as np
+    from function_acaw import imgs_set_, click_pos_reg
+
+    try:
+
+        for i in range(10):
+
+            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\auto_on.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(850, 900, 940, 940, cla, img, 0.9)
+            if imgs_ is not None and imgs_ != False:
+                print("auto_on", imgs_)
+                break
+            else:
+                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\auto_off.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(850, 900, 940, 940, cla, img, 0.9)
+                if imgs_ is not None and imgs_ != False:
+                    print("auto_off", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                else:
+                    clean_screen(cla)
+            time.sleep(0.3)
+
     except Exception as e:
         print(e)
         return 0
