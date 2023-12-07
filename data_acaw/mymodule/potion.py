@@ -500,7 +500,6 @@ def buy_potion(cla):
                                     click_pos_2(300, 880, cla)
                                     time.sleep(0.2)
                                     time.sleep(0.5)
-                                    isJabhwa = True
                                     per_ready = True
                                     if click_count > 0:
 
@@ -547,7 +546,7 @@ def buy_potion(cla):
                             imgs_ = imgs_set_(480, 600, 650, 650, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
                                 print("jab_confirm", imgs_)
-                                isJabhwa = True
+
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
                                 last_buy = True
                                 time.sleep(2)
@@ -574,6 +573,7 @@ def buy_potion(cla):
                         click_pos_reg(imgs_.x, imgs_.y, cla)
 
                     # 마을 이동 구매
+                    isJabhwa = True
 
                     click_pos_2(905, 135, cla)
                     time.sleep(0.2)
