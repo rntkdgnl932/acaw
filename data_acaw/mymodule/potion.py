@@ -20,175 +20,13 @@ def potion_start(cla):
         return 0
 
 
-def my_potion_check_ex(cla):
-    try:
-        import cv2
-        import numpy as np
-        from function_acaw import click_pos_reg, imgs_set_, text_check_get, click_pos_2, drag_pos, in_number_check, int_put_, change_number
-        from action import clean_screen, out_check
 
-        potion_read_ready = False
-        #v_.potion_search_count = 0
-        potion_tuto_count = 0
-        while potion_read_ready is False:
-            potion_tuto_count += 1
-            if potion_tuto_count > 10:
-                potion_read_ready = True
-                print("튜토 진행중이라 물약 갯수 읽기 불가능")
-            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\potion_1.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(700, 385, 760, 420, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-
-                maul_move_check(cla)
-
-                potion_read_ready = True
-                potion_ = text_check_get(750, 482, 785, 495, cla)
-                print("앞4자리 potion_?", potion_)
-                potion_many = change_number(potion_)
-
-                if potion_many != v_.potion_result:
-
-                    v_.potion_result = potion_many
-                    potion_bool = in_number_check(cla, potion_)
-
-                    if potion_bool == True:
-
-
-                        print("포션 있음 :", v_.potion_result)
-                        if int(v_.potion_result) < 100:
-                            v_.potion_search_count += 1
-                            print("v_.potion_search_count_1 (+)", "[ " + str(v_.potion_search_count) + " ]")
-                        else:
-                            if v_.potion_search_count > 1:
-                                v_.potion_search_count -= 1
-                                print("v_.potion_search_count_1 (-)", "[ " + str(v_.potion_search_count) + " ]")
-                        if v_.potion_search_count > 10:
-                            v_.potion_search_count = 0
-                            print("포션사러 가주앗")
-                            buy_potion(cla)
-                    else:
-                        v_.potion_search_count += 1
-                        print("v_.potion_search_count_2 (+)", "[ " + str(v_.potion_search_count) + " ]")
-                        if v_.potion_search_count > 10:
-                            v_.potion_search_count = 0
-                            print("포션사러 가주앗")
-                            buy_potion(cla)
-                            #click_pos_2(255, 980, cla)
-                        print("포션 못 읽음")
-                else:
-                    print("이전과 포션 숫자가 같다", v_.potion_result)
-            else:
-                result_out = out_check(cla)
-                if result_out == True:
-                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\clean_screen\\bag_1.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(700, 660, 750, 705, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        print("bag_1", imgs_)
-                        click_pos_2(875, 340, cla)
-                        time.sleep(0.1)
-                        click_pos_2(820, 685, cla)
-                        look_potion = False
-                        look_ok = False
-                        look_potion_count = 0
-                        while look_potion is False:
-                            look_potion_count += 1
-                            if look_potion_count > 20:
-                                look_potion = True
-
-                            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\small_potion_11.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(680, 300, 960, 670, cla, img, 0.85)
-                            if imgs_ is not None and imgs_ != False:
-                                look_potion = True
-                                look_ok = True
-                                x_reg = imgs_.x
-                                y_reg = imgs_.y
-                            else:
-                                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\small_potion_1.PNG"
-                                img_array = np.fromfile(full_path, np.uint8)
-                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(695, 355, 940, 670, cla, img, 0.9)
-                                if imgs_ is not None and imgs_ != False:
-                                    look_potion = True
-                                    look_ok = True
-                                    x_reg = imgs_.x
-                                    y_reg = imgs_.y
-                                else:
-                                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\small_potion_2.PNG"
-                                    img_array = np.fromfile(full_path, np.uint8)
-                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(695, 355, 940, 670, cla, img, 0.9)
-                                    if imgs_ is not None and imgs_ != False:
-                                        look_potion = True
-                                        look_ok = True
-                                        x_reg = imgs_.x
-                                        y_reg = imgs_.y
-                        if look_ok == True:
-                            click_pos_reg(x_reg, y_reg, cla)
-                            time.sleep(0.1)
-                            click_pos_2(865, 680, cla)
-                        else:
-
-                            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\zero.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(480, 980, 500, 1010, cla, img, 0.8)
-                            if imgs_ is not None and imgs_ != False:
-                                print("숫자 '0'이다. 포션 사러 가자", imgs_)
-                                potion_read_ready = True
-                                buy_potion(cla)
-                            else:
-                                print("숫자 '0'이 아니다.")
-
-                                potion_tuto_count += 1
-                                if potion_tuto_count > 3:
-                                    drag_pos(820, 640, 820, 460, cla)
-                                    time.sleep(1.5)
-                                    if potion_tuto_count > 6:
-                                        potion_tuto_count = 0
-                                        print("포션 수량 계속 알아보자")
-                                        # buy_potion(cla)
-                                        # drag_pos(820, 460, 820, 640, cla)
-                                        click_pos_2(875, 340, cla)
-                                        time.sleep(2)
-
-
-
-
-                    else:
-                        click_pos_2(770, 60, cla)
-
-                        # 여기에 무기 체크
-                        if v_.grow_jangbi == True:
-                            grow_jangbi_check(cla)
-
-
-
-                else:
-                    clean_screen(cla)
-
-
-
-        #
-        #for i in range(1):
-        #    potion_ = text_check_get(725 + i, 360, 750, 370, cla)
-        #    print("<<" + str(725 + i) + ">>")
-        #    print(potion_)
-
-
-    except Exception as e:
-        print(e)
-        return 0
 
 def my_potion_check(cla):
     try:
         import cv2
         import numpy as np
+        import os
         from function_acaw import click_pos_reg, imgs_set_, text_check_get, click_pos_2, drag_pos, in_number_check, int_put_, change_number
         from action import clean_screen, out_check, juljun_off
 
@@ -245,6 +83,9 @@ def my_potion_check(cla):
                     else:
                         v_.my_potion_check += 1
                         print("포션 없다", v_.my_potion_check)
+
+                        juljun_potion_checking(cla)
+
                         if v_.my_potion_check > 3:
                             buy_potion(cla)
 
@@ -255,7 +96,69 @@ def my_potion_check(cla):
         print(e)
         return 0
 
+def juljun_potion_checking(cla):
+    import cv2
+    import numpy as np
+    from function_acaw import imgs_set_, click_pos_2, drag_pos
+    from action import out_check, clean_screen
+    try:
 
+        dir_path = "C:\\my_games\\" + str(v_.game_folder) + "\\mysettings\\my_level"
+        one_file_path = dir_path + "\\one_character.txt"
+
+        with open(one_file_path, "r", encoding='utf-8-sig') as file:
+            one_read_level = file.read()
+
+        if int(one_read_level) > 39:
+            x_reg = 110
+        else:
+            x_reg = 55
+
+
+        juljun_ = False
+        juljun_count = 0
+        while juljun_ is False:
+            juljun_count += 1
+            if juljun_count > 7:
+                juljun_ = True
+
+            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\title\\title_juljun.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(750, 30, 900, 90, cla, img, 0.7)
+            if imgs_ is not None and imgs_ != False:
+
+                click_pos_2(x_reg, 920, cla)
+
+                for i in range(10):
+                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\juljun\\potion_on.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(220, 930, 315, 975, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_2(920, 60, cla)
+                        break
+                    else:
+                        click_pos_2(x_reg, 920, cla)
+                    time.sleep(0.5)
+
+                for i in range(10):
+                    result_out = out_check(cla)
+                    if result_out == True:
+                        juljun_ = True
+                        break
+                    else:
+                        clean_screen(cla)
+                    time.sleep(0.5)
+
+            else:
+                clean_screen(cla)
+                click_pos_2(45, 990, cla)
+            time.sleep(0.5)
+
+    except Exception as e:
+        print(e)
+        return 0
 
 def maul_move_check(cla):
     try:

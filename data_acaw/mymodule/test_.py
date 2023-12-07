@@ -18,7 +18,7 @@ def go_test():
     from function_acaw import imgs_set_, click_pos_reg
     from dead_die import boohwal
     from action import out_check, clean_screen, juljun_off, juljun_on, auto_on
-    from potion import buy_potion, maul_move_check, soongan_move_check, my_potion_check
+    from potion import buy_potion, maul_move_check, soongan_move_check, my_potion_check, juljun_potion_checking
     from get_item import set_collection, boonhae, get_post, daily_check
     from jadong_acaw import jadong_in_spot_go, jadong_start
 
@@ -52,7 +52,7 @@ def go_test():
 
     # jadong_start(cla, "자동_송별의뜰")
 
-    boonhae(cla)
+    my_potion_check(cla)
 
 
     full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\juljun_small_potion_zero.PNG"

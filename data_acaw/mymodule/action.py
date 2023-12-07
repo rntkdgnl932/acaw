@@ -284,6 +284,8 @@ def juljun_on(cla):
                 imgs_ = imgs_set_(750, 30, 900, 90, cla, img, 0.7)
                 if imgs_ is not None and imgs_ != False:
 
+                    click_pos_2(110, 920, cla)
+
                     for i in range(10):
                         full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\juljun\\potion_on.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
