@@ -11,7 +11,6 @@ import variable as v_
 def get_item_start(cla):
     try:
         from action import clean_screen
-        from schedule import myQuest_play_add
         print("get_item_start")
         get_post(cla)
         set_collection(cla)
@@ -20,7 +19,7 @@ def get_item_start(cla):
 
         clean_screen(cla)
 
-        myQuest_play_add(cla, "각종템받기")
+
 
 
     except Exception as e:

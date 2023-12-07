@@ -47,6 +47,7 @@ from schedule import myQuest_play_check, myQuest_play_add
 
 from tuto_acaw import tuto_start
 from jadong_acaw import jadong_start
+from get_item import get_item_start
 
 
 from stop_event18 import _stop_please
@@ -3235,7 +3236,11 @@ class game_Playing(QThread):
 
                                 # 오토 시작
 
-                                if result_schedule_ == "튜토육성":
+                                if result_schedule_ == "각종템받기":
+                                    get_item_start(v_.now_cla)
+                                    myQuest_play_add(v_.now_cla, "각종템받기")
+
+                                elif result_schedule_ == "튜토육성":
                                     tuto_start(v_.now_cla, result_schedule_)
                                     print("start")
                                 elif "자동" in result_schedule_:

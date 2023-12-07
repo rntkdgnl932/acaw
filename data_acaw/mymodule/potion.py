@@ -431,7 +431,7 @@ def buy_potion(cla):
         from function_acaw import click_pos_reg, imgs_set_, click_pos_2, in_number_check, int_put_, text_check_get, change_number, drag_pos
         from massenger import line_to_me
         from action import clean_screen
-        from get_item import set_collection, boonhae
+        from get_item import set_collection, boonhae, get_item_start
 
         close_to_potion = False
         close_to_potion_count = 0
@@ -732,12 +732,7 @@ def buy_potion(cla):
                 time.sleep(0.3)
         v_.jadong_on = False
 
-        set_collection(cla)
-        boonhae(cla)
-
-        soongan_move_check(cla)
-
-        clean_screen(cla)
+        get_item_start(cla)
 
     except Exception as e:
         print(e)
