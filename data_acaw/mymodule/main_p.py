@@ -50,6 +50,7 @@ from jadong_acaw import jadong_start
 from get_item import get_item_start
 
 from dead_die import dead_die_start
+from potion import my_potion_check
 
 
 from stop_event18 import _stop_please
@@ -3228,7 +3229,8 @@ class game_Playing(QThread):
                                 # 죽었는지 파악
                                 dead_die_start(v_.now_cla, result_schedule_)
 
-
+                                # 실시간 물약 파악
+                                my_potion_check(v_.now_cla)
 
                                 # 일시적인 이벤트(5000)
                                 # temporary_event_start(v_.now_cla)
