@@ -341,6 +341,14 @@ def buy_potion(cla):
         from action import clean_screen
         from get_item import set_collection, boonhae, get_item_start
 
+        # 절전모드일 경우 풀기
+        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\juljun\\juljun_ing.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(400, 400, 600, 600, cla, img, 0.7)
+        if imgs_ is not None and imgs_ != False:
+            drag_pos(480, 520, 800, 520, cla)
+
         close_to_potion = False
         close_to_potion_count = 0
         while close_to_potion is False:
@@ -369,6 +377,9 @@ def buy_potion(cla):
             if imgs_ is not None and imgs_ != False:
                 print("maul______", imgs_)
 
+                get_item_start(cla)
+                time.sleep(0.5)
+
                 drag_pos(240, 100, 600, 100, cla)
                 time.sleep(0.3)
                 click_pos_2(425, 105, cla)
@@ -379,7 +390,7 @@ def buy_potion(cla):
                     imgs_ = imgs_set_(750, 30, 840, 80, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         break
-                    time.sleep(0.2)
+                    time.sleep(1)
                 # full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\jabhwa_1.PNG"
                 # img_array = np.fromfile(full_path, np.uint8)
                 # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -414,6 +425,9 @@ def buy_potion(cla):
                         imgs_ = imgs_set_(330, 940, 400, 1010, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             click_pos_2(370, 980, cla)
+
+
+
                         else:
                             maul_move_check(cla)
 
@@ -590,7 +604,7 @@ def buy_potion(cla):
                         full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\my_maul_move_sangjum.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(690, 150, 940, 950, cla, img, 0.7)
+                        imgs_ = imgs_set_(690, 150, 940, 950, cla, img, 0.6)
                         if imgs_ is not None and imgs_ != False:
                             move_ = True
                         else:
@@ -628,7 +642,7 @@ def buy_potion(cla):
                         full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\my_random_move_sangjum.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(690, 150, 940, 950, cla, img, 0.7)
+                        imgs_ = imgs_set_(690, 150, 940, 950, cla, img, 0.6)
                         if imgs_ is not None and imgs_ != False:
                             move_ = True
                         else:
@@ -660,7 +674,8 @@ def buy_potion(cla):
                 time.sleep(0.3)
         v_.jadong_on = False
 
-        get_item_start(cla)
+        clean_screen(cla)
+
 
     except Exception as e:
         print(e)

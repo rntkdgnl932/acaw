@@ -298,9 +298,14 @@ def boonhae(cla):
                         print("daily_confirm_1", imgs_)
                         boonhae_ready = True
                     else:
-                        click_pos_2(720, 650, cla)
+                        click_pos_2(720, 655, cla)
+                        time.sleep(0.2)
+                        click_pos_2(775, 655, cla)
                         time.sleep(0.2)
                         click_pos_2(820, 685, cla)
+                        time.sleep(0.2)
+                        click_pos_2(820, 685, cla)
+                        time.sleep(0.2)
 
                 else:
                     click_pos_reg(b_x_reg, b_y_reg, cla)

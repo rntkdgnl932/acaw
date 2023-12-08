@@ -52,19 +52,19 @@ def go_test():
 
     # jadong_start(cla, "자동_송별의뜰")
 
-    buy_potion(cla)
+    # buy_potion(cla)
 
     full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\my_maul_move_sangjum.PNG"
     img_array = np.fromfile(full_path, np.uint8)
     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(690, 150, 940, 950, cla, img, 0.7)
+    imgs_ = imgs_set_(690, 150, 940, 950, cla, img, 0.6)
     if imgs_ is not None and imgs_ != False:
         print("my_maul_move_sangjum", imgs_)
 
     full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\my_random_move_sangjum.PNG"
     img_array = np.fromfile(full_path, np.uint8)
     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(690, 150, 940, 950, cla, img, 0.7)
+    imgs_ = imgs_set_(690, 150, 940, 950, cla, img, 0.6)
     if imgs_ is not None and imgs_ != False:
         print("my_random_move_sangjum", imgs_)
 
