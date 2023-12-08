@@ -507,46 +507,69 @@ def buy_potion(cla):
                                 buy_per_ready = change_number(potion_per)
                                 print("buy_per_ready", buy_per_ready)
                                 print("buy_per_ready[0]", buy_per_ready[0])
-                                if int(buy_per_ready[0]) >= 7:
+                                if int(buy_per_ready[0]) >= 6:
                                     click_count = per_count - 1
                                     print("click_count", click_count)
                                     # per_ready = True
-                                    click_pos_2(300, 880, cla)
-                                    time.sleep(0.2)
-                                    time.sleep(0.5)
+                                    # click_pos_2(300, 880, cla)
+                                    # time.sleep(0.2)
+                                    # time.sleep(0.5)
                                     per_ready = True
-                                    if click_count > 0:
 
-                                        last_buy = False
-                                        last_buy_count = 0
-                                        while last_buy is False:
-                                            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\jab_confirm.PNG"
-                                            img_array = np.fromfile(full_path, np.uint8)
-                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                            imgs_ = imgs_set_(480, 600, 650, 650, cla, img, 0.8)
-                                            if imgs_ is not None and imgs_ != False:
-                                                print("jab_confirm", imgs_)
-                                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    click_pos_2(865, 995, cla)
+                                    time.sleep(0.5)
+
+                                    last_buy = False
+                                    last_buy_count = 0
+                                    while last_buy is False:
+                                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\jab_confirm.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(480, 600, 650, 650, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("jab_confirm", imgs_)
+                                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                                            last_buy = True
+                                        else:
+                                            last_buy_count += 1
+                                            if last_buy_count > 5:
                                                 last_buy = True
-                                            else:
-                                                last_buy_count += 1
-                                                if last_buy_count > 3:
-                                                    last_buy = True
-                                                    line_to_me(cla, "물약 사는데 문제 있다ㅠ")
-                                                    clean_screen(cla)
-                                                click_pos_2(x_reg, y_reg, cla)
-                                                time.sleep(0.3)
-                                                for i in range(click_count):
-                                                    click_pos_2(415, 945, cla)
-                                                    time.sleep(0.2)
-                                                click_pos_2(865, 995, cla)
-                                                time.sleep(0.5)
-                                            time.sleep(0.5)
+                                            click_pos_2(865, 995, cla)
+                                        time.sleep(0.5)
+
+                                    # if click_count > 0:
+                                    #
+                                    #     last_buy = False
+                                    #     last_buy_count = 0
+                                    #     while last_buy is False:
+                                    #         full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\jab_confirm.PNG"
+                                    #         img_array = np.fromfile(full_path, np.uint8)
+                                    #         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    #         imgs_ = imgs_set_(480, 600, 650, 650, cla, img, 0.8)
+                                    #         if imgs_ is not None and imgs_ != False:
+                                    #             print("jab_confirm", imgs_)
+                                    #             click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    #             last_buy = True
+                                    #         else:
+                                    #             last_buy_count += 1
+                                    #             if last_buy_count > 3:
+                                    #                 last_buy = True
+                                    #                 line_to_me(cla, "물약 사는데 문제 있다ㅠ")
+                                    #                 clean_screen(cla)
+                                    #             click_pos_2(x_reg, y_reg, cla)
+                                    #             time.sleep(0.3)
+                                    #             for i in range(click_count):
+                                    #                 click_pos_2(415, 945, cla)
+                                    #                 time.sleep(0.2)
+                                    #             click_pos_2(865, 995, cla)
+                                    #             time.sleep(0.5)
+                                    #         time.sleep(0.5)
                                 else:
                                     per_count += 1
                                     click_pos_2(415, 945, cla)
                                     time.sleep(0.5)
                                 time.sleep(0.5)
+
                     else:
                         last_buy = False
                         last_buy_count = 0

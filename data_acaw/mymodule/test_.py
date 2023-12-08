@@ -52,7 +52,10 @@ def go_test():
 
     # jadong_start(cla, "자동_송별의뜰")
 
-    # buy_potion(cla)
+    buy_potion(cla)
+
+
+    # boonhae(cla)
 
     full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\my_maul_move_sangjum.PNG"
     img_array = np.fromfile(full_path, np.uint8)

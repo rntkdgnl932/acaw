@@ -293,10 +293,12 @@ def boonhae(cla):
                     full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\daily_confirm_1.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(480, 600, 660, 660, cla, img, 0.8)
+                    imgs_ = imgs_set_(480, 600, 660, 680, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         print("daily_confirm_1", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
                         boonhae_ready = True
+                        time.sleep(0.5)
                     else:
                         click_pos_2(720, 655, cla)
                         time.sleep(0.2)
@@ -304,8 +306,15 @@ def boonhae(cla):
                         time.sleep(0.2)
                         click_pos_2(820, 685, cla)
                         time.sleep(0.2)
-                        click_pos_2(820, 685, cla)
-                        time.sleep(0.2)
+                        for i in range(10):
+                            ull_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\daily_confirm_1.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(480, 600, 660, 680, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                break
+                            time.sleep(0.2)
+
 
                 else:
                     click_pos_reg(b_x_reg, b_y_reg, cla)
