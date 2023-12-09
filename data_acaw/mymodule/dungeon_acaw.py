@@ -335,6 +335,9 @@ def dungeon_in_spot_go(cla, where):
                 print("step 클릭해서 진입하자", spot_name)
                 # spot_[2] => 스텝...1~6
                 y_reg = 110 + (50 * int(spot_[2]))
+                if spot_[1] == "도서관":
+                    if int(spot_[2]) >= 2:
+                        y_reg = 110 + (50 * 2)
 
                 click_pos_2(100, y_reg, cla)
                 time.sleep(0.5)
