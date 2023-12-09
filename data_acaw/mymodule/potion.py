@@ -84,9 +84,6 @@ def my_potion_check(cla):
                         v_.my_potion_check += 1
                         print("포션 없다", v_.my_potion_check)
 
-                        juljun_potion_checking(cla)
-
-
                         if v_.my_potion_check > 10:
                             buy_potion(cla)
                         elif v_.my_potion_check > 5:
