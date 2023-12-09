@@ -448,7 +448,7 @@ def dungeon_in_spot_go(cla, where):
                         full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\dungeon\\time_out.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(415, 630, 490, 690, cla, img, 0.7)
+                        imgs_ = imgs_set_(415, 630, 490, 690, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             dun_clear = True
                     elif spot_[1] == "얼음잔":
@@ -457,7 +457,7 @@ def dungeon_in_spot_go(cla, where):
                         full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\dungeon\\time_out.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(650, 630, 740, 690, cla, img, 0.7)
+                        imgs_ = imgs_set_(650, 630, 740, 690, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             dun_clear = True
                     elif spot_[1] == "신전":
@@ -466,7 +466,7 @@ def dungeon_in_spot_go(cla, where):
                         full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\dungeon\\time_out.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(625, 630, 700, 690, cla, img, 0.7)
+                        imgs_ = imgs_set_(625, 630, 700, 690, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             dun_clear = True
                     elif spot_[1] == "폐광":
@@ -475,7 +475,7 @@ def dungeon_in_spot_go(cla, where):
                         full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\dungeon\\time_out.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(165, 630, 240, 690, cla, img, 0.7)
+                        imgs_ = imgs_set_(165, 630, 240, 690, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             dun_clear = True
                     elif spot_[1] == "도서관":
@@ -484,21 +484,21 @@ def dungeon_in_spot_go(cla, where):
                         full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\dungeon\\time_out.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(875, 630, 950, 690, cla, img, 0.7)
+                        imgs_ = imgs_set_(875, 630, 950, 690, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             dun_clear = True
                     elif spot_[1] == "길잃은바다":
                         full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\dungeon\\time_out.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(165, 630, 240, 690, cla, img, 0.7)
+                        imgs_ = imgs_set_(165, 630, 240, 690, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             dun_clear = True
                     elif spot_[1] == "전장":
                         full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\dungeon\\time_out.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(165, 630, 240, 690, cla, img, 0.7)
+                        imgs_ = imgs_set_(165, 630, 240, 690, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             dun_clear = True
                     elif spot_[1] == "틈":
