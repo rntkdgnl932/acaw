@@ -86,8 +86,11 @@ def my_potion_check(cla):
 
                         juljun_potion_checking(cla)
 
-                        if v_.my_potion_check > 3:
+
+                        if v_.my_potion_check > 10:
                             buy_potion(cla)
+                        elif v_.my_potion_check > 5:
+                            juljun_potion_checking(cla)
 
 
 
