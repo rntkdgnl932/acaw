@@ -68,7 +68,7 @@ def my_potion_check(cla):
                 full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\out_small_potion.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(460, 950, 500, 1005, cla, img, 0.8)
+                imgs_ = imgs_set_(460, 950, 500, 1005, cla, img, 0.7)
                 if imgs_ is not None and imgs_ != False:
                     v_.my_potion_check = 0
                     print("out_small_potion", imgs_)
@@ -76,7 +76,7 @@ def my_potion_check(cla):
                     full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\out_middle_potion.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(460, 950, 500, 1005, cla, img, 0.8)
+                    imgs_ = imgs_set_(460, 950, 500, 1005, cla, img, 0.7)
                     if imgs_ is not None and imgs_ != False:
                         v_.my_potion_check = 0
                         print("out_middle_potion", imgs_)
@@ -88,6 +88,7 @@ def my_potion_check(cla):
 
                         if v_.my_potion_check > 3:
                             buy_potion(cla)
+
 
 
 
@@ -703,6 +704,8 @@ def buy_potion(cla):
         v_.jadong_on = False
 
         clean_screen(cla)
+
+        v_.my_potion_check = 0
 
 
     except Exception as e:

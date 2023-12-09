@@ -57,6 +57,30 @@ def go_test():
 
     # boonhae(cla)
 
+    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\out_small_potion.PNG"
+    img_array = np.fromfile(full_path, np.uint8)
+    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    imgs_ = imgs_set_(460, 950, 500, 1005, cla, img, 0.8)
+    if imgs_ is not None and imgs_ != False:
+        v_.my_potion_check = 0
+        print("out_small_potion", imgs_)
+    else:
+        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\out_middle_potion.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(460, 950, 500, 1005, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            v_.my_potion_check = 0
+            print("out_middle_potion", imgs_)
+        else:
+            v_.my_potion_check += 1
+            print("포션 없다", v_.my_potion_check)
+
+            juljun_potion_checking(cla)
+
+            if v_.my_potion_check > 3:
+                buy_potion(cla)
+
     full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\dungeon\\time_out.PNG"
     img_array = np.fromfile(full_path, np.uint8)
     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)

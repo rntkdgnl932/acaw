@@ -224,7 +224,7 @@ def tuto_status(cla):
     try:
         import cv2
         import numpy as np
-        from function_acaw import click_pos_reg, imgs_set_, click_pos_2
+        from function_acaw import click_pos_reg, imgs_set_, click_pos_2, drag_pos
         full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\tuto\\tuto_status_1.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -248,6 +248,17 @@ def tuto_status(cla):
                     is_stat_ = True
                 else:
                     click_pos_2(480, 515, cla)
+                    time.sleep(0.1)
+                    click_pos_2(480, 515, cla)
+                    time.sleep(0.1)
+                    click_pos_2(480, 515, cla)
+                    time.sleep(0.1)
+                    drag_pos(400, 640, 400, 300, cla)
+                    time.sleep(0.1)
+                    click_pos_2(480, 430, cla)
+                    time.sleep(0.1)
+                    click_pos_2(480, 430, cla)
+                    time.sleep(0.1)
                 time.sleep(0.1)
 
 
