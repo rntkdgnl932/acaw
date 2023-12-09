@@ -15,6 +15,7 @@ def jadong_start(cla, where):
     import os
     from function_acaw import imgs_set_, click_pos_reg, click_pos_2
     from action import clean_screen, juljun_off, juljun_on, auto_on
+    from potion import my_potion_check
 
     try:
 
@@ -46,6 +47,7 @@ def jadong_start(cla, where):
 
                 if result_jadong_check == True:
                     print("지정한 사냥터에서 사냥중")
+                    my_potion_check(cla)
                 else:
                     juljun_off(cla)
 
@@ -324,152 +326,176 @@ def jadong_in_spot_go(cla, where):
                     spot_second_list = result_spot[2]
                     title_ = "sea"
 
+        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\common_.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(40, 70, 120, 120, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("common_", imgs_)
+            click_pos_reg(imgs_.x, imgs_.y, cla)
+            for i in range(10):
+                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\jadong_list_out.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(200, 70, 300, 150, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    break
+                time.sleep(0.3)
 
-        in_spot = False
-        in_spot_count = 0
-        while in_spot is False:
-            in_spot_count += 1
-            if in_spot_count > 6:
-                in_spot = True
+        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\jadong_out_list\\" + str(spot_name) + ".PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(30, 90, 200, 130, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("out_jadong_spot", spot_name)
 
-            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\title\\title_worldmap.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(780, 30, 900, 90, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                print("worldmap")
+        else:
 
-                # 큰 타이틀 맵 클릭
-                if title_ == "nooia":
-                    for i in range(10):
-                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\nooia.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(50, 60, 170, 105, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            break
-                        else:
-                            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\sea.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(50, 60, 170, 105, cla, img, 0.8)
-                            if imgs_ is not None and imgs_ != False:
-                                click_pos_reg(imgs_.x, imgs_.y, cla)
-                                for c in range(10):
-                                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\nooia_click.PNG"
-                                    img_array = np.fromfile(full_path, np.uint8)
-                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(50, 95, 170, 160, cla, img, 0.8)
-                                    if imgs_ is not None and imgs_ != False:
-                                        click_pos_reg(imgs_.x, imgs_.y, cla)
-                                        break
-                                    time.sleep(0.5)
-                        time.sleep(0.5)
-                elif title_ == "sea":
-                    for i in range(10):
-                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\sea.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(50, 60, 170, 105, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            break
-                        else:
+            in_spot = False
+            in_spot_count = 0
+            while in_spot is False:
+                in_spot_count += 1
+                if in_spot_count > 6:
+                    in_spot = True
+
+                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\title\\title_worldmap.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(780, 30, 900, 90, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("worldmap")
+
+                    # 큰 타이틀 맵 클릭
+                    if title_ == "nooia":
+                        for i in range(10):
                             full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\nooia.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                             imgs_ = imgs_set_(50, 60, 170, 105, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
-                                click_pos_reg(imgs_.x, imgs_.y, cla)
-                                for c in range(10):
-                                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\sea_click.PNG"
-                                    img_array = np.fromfile(full_path, np.uint8)
-                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(50, 95, 170, 160, cla, img, 0.8)
-                                    if imgs_ is not None and imgs_ != False:
-                                        click_pos_reg(imgs_.x, imgs_.y, cla)
-                                        break
-                                    time.sleep(0.5)
-                        time.sleep(0.5)
-                # 두번째 타이틀 맵 클릭하기 전 정리
-                for i in range(15):
-                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\worldmap_up.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(200, 100, 280, 1040, cla, img, 0.7)
-                    if imgs_ is not None and imgs_ != False:
-                        print("worldmap_up", imgs_)
-                        click_pos_reg(imgs_.x, imgs_.y, cla)
-                    else:
-                        break
-                    time.sleep(0.5)
-                # 두번째 타이틀 맵 및 지정한 사냥터 클릭
-                for i in range(10):
-                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\confirm_1.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(480, 620, 640, 670, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        print("confirm_1", imgs_)
-                        click_pos_reg(imgs_.x, imgs_.y, cla)
-                        break
-
-                    else:
-
-                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\worldmap_list\\" + str(spot_name) + ".PNG"
+                                break
+                            else:
+                                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\sea.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(50, 60, 170, 105, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    for c in range(10):
+                                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\nooia_click.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(50, 95, 170, 160, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                                            break
+                                        time.sleep(0.5)
+                            time.sleep(0.5)
+                    elif title_ == "sea":
+                        for i in range(10):
+                            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\sea.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(50, 60, 170, 105, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                break
+                            else:
+                                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\nooia.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(50, 60, 170, 105, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    for c in range(10):
+                                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\sea_click.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(50, 95, 170, 160, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                                            break
+                                        time.sleep(0.5)
+                            time.sleep(0.5)
+                    # 두번째 타이틀 맵 클릭하기 전 정리
+                    for i in range(15):
+                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\worldmap_up.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(30, 90, 260, 1040, cla, img, 0.8)
+                        imgs_ = imgs_set_(200, 100, 280, 1040, cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
-                            time.sleep(0.5)
-                            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\worldmap_list_clicked\\" + str(spot_name) + ".PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(720, 90, 900, 145, cla, img, 0.8)
-                            if imgs_ is not None and imgs_ != False:
-                                print("jadong_spot_clicked", spot_name)
-                                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\jadong_soongan_move2.PNG"
-                                img_array = np.fromfile(full_path, np.uint8)
-                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(795, 980, 945, 1025, cla, img, 0.8)
-                                if imgs_ is not None and imgs_ != False:
-                                    print("jadong_soongan_move2", imgs_)
-                                    click_pos_reg(imgs_.x, imgs_.y, cla)
-                            else:
-                                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\worldmap_list\\" + str(
-                                    spot_name) + ".PNG"
-                                img_array = np.fromfile(full_path, np.uint8)
-                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(30, 90, 260, 1040, cla, img, 0.8)
-                                if imgs_ is not None and imgs_ != False:
-                                    print("jadong_spot", spot_name)
-                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                            print("worldmap_up", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
                         else:
-                            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\worldmap_second_list\\" + str(spot_second_list) + ".PNG"
+                            break
+                        time.sleep(0.5)
+                    # 두번째 타이틀 맵 및 지정한 사냥터 클릭
+                    for i in range(10):
+                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\confirm_1.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(480, 620, 640, 670, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("confirm_1", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            break
+
+                        else:
+
+                            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\worldmap_list\\" + str(spot_name) + ".PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(60, 90, 260, 1040, cla, img, 0.8)
+                            imgs_ = imgs_set_(30, 90, 260, 1040, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
-                                print("second_jadong_spot", spot_name)
-                                click_pos_reg(imgs_.x, imgs_.y, cla)
-                    time.sleep(0.5)
-                # 현장 도착하는지 파악
-                for i in range(10):
-                    result_out = out_check(cla)
-                    if result_out == True:
-                        in_spot = True
-                        break
-                    time.sleep(1)
-            else:
-                clean_screen(cla)
-                click_pos_2(140, 140, cla)
-                for i in range(10):
-                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\title\\title_worldmap.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(780, 30, 900, 90, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        break
-                    time.sleep(0.5)
+                                time.sleep(0.5)
+                                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\worldmap_list_clicked\\" + str(spot_name) + ".PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(720, 90, 900, 145, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("jadong_spot_clicked", spot_name)
+                                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\jadong_soongan_move2.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(795, 980, 945, 1025, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("jadong_soongan_move2", imgs_)
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                else:
+                                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\worldmap_list\\" + str(
+                                        spot_name) + ".PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(30, 90, 260, 1040, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("jadong_spot", spot_name)
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                            else:
+                                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\worldmap_second_list\\" + str(spot_second_list) + ".PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(60, 90, 260, 1040, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("second_jadong_spot", spot_name)
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.5)
+                    # 현장 도착하는지 파악
+                    for i in range(10):
+                        result_out = out_check(cla)
+                        if result_out == True:
+                            in_spot = True
+                            break
+                        time.sleep(1)
+                else:
+                    clean_screen(cla)
+                    click_pos_2(140, 140, cla)
+                    for i in range(10):
+                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\title\\title_worldmap.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(780, 30, 900, 90, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            break
+                        time.sleep(0.5)
 
     except Exception as e:
         print(e)
