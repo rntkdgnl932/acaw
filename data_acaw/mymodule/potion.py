@@ -385,8 +385,8 @@ def buy_potion(cla):
 
                 get_item_start(cla)
                 time.sleep(0.5)
-
-                drag_pos(240, 100, 600, 100, cla)
+                chango_in(cla)
+                # drag_pos(240, 100, 600, 100, cla)
                 time.sleep(0.3)
                 click_pos_2(425, 105, cla)
                 for i in range(10):
@@ -711,6 +711,105 @@ def buy_potion(cla):
     except Exception as e:
         print(e)
         return 0
+
+
+def chango_in(cla):
+    import cv2
+    import numpy as np
+    from function_acaw import click_pos_reg, imgs_set_, click_pos_2, drag_pos
+    from action import bag_open
+    try:
+
+        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\maul_.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(40, 70, 150, 150, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("maul______", imgs_)
+
+            chango_click = False
+            chango_click_count = 0
+            while chango_click is False:
+                chango_click_count += 1
+                if chango_click_count > 7:
+                    chango_click = True
+
+                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\jadong_bogwan.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(690, 970, 800, 1020, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+
+                    for i in range(3):
+                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\all_bogwan.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(800, 980, 940, 1020, cla, img, 0.9)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            break
+                        else:
+                            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\jadong_bogwan.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(690, 970, 800, 1020, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.3)
+                    for i in range(5):
+                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\jadong_bogwan.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(690, 970, 800, 1020, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_2(920, 60, cla)
+                        else:
+                            chango_click = True
+                            break
+                        time.sleep(0.3)
+                else:
+
+                    clicked = False
+
+                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\chango.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(275, 80, 330, 130, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        clicked = True
+                    else:
+                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\chango_clicked.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(275, 80, 330, 130, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            clicked = True
+                        else:
+                            drag_pos(240, 100, 600, 100, cla)
+                            time.sleep(0.3)
+
+                    if clicked == True:
+                        for i in range(10):
+                            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\jadong_bogwan.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(690, 970, 800, 1020, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                break
+                            time.sleep(1)
+                time.sleep(0.5)
+
+
+
+
+    except Exception as e:
+        print(e)
+        return 0
+
+
+
 
 
 def grow_jangbi_check(cla):

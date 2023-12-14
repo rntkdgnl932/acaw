@@ -18,13 +18,13 @@ def go_test():
     from function_acaw import imgs_set_, click_pos_reg
     from dead_die import boohwal
     from action import out_check, clean_screen, juljun_off, juljun_on, auto_on
-    from potion import buy_potion, maul_move_check, soongan_move_check, my_potion_check, juljun_potion_checking
+    from potion import buy_potion, maul_move_check, soongan_move_check, my_potion_check, juljun_potion_checking, chango_in
     from get_item import set_collection, boonhae, get_post, daily_check
     from jadong_acaw import jadong_in_spot_go, jadong_start
 
 
     print("test")
-    cla = "two"
+    cla = "one"
 
     plus = 0
 
@@ -57,43 +57,60 @@ def go_test():
 
     # boonhae(cla)
 
-    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\out_small_potion.PNG"
+    chango_in(cla)
+
+    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\chango.PNG"
     img_array = np.fromfile(full_path, np.uint8)
     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(460, 950, 500, 1005, cla, img, 0.6)
+    imgs_ = imgs_set_(275, 80, 330, 130, cla, img, 0.8)
     if imgs_ is not None and imgs_ != False:
-        v_.my_potion_check = 0
-        print("out_small_potion", imgs_)
-    else:
-        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\out_middle_potion.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(460, 950, 500, 1005, cla, img, 0.6)
-        if imgs_ is not None and imgs_ != False:
-            v_.my_potion_check = 0
-            print("out_middle_potion", imgs_)
-        else:
-            v_.my_potion_check += 1
-            print("포션 없다", v_.my_potion_check)
+        print("chango chango chango chango chango chango chango chango chango chango chango chango")
 
-            juljun_potion_checking(cla)
-
-            if v_.my_potion_check > 3:
-                buy_potion(cla)
-
-    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\dungeon\\time_out.PNG"
+    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\all_bogwan.PNG"
     img_array = np.fromfile(full_path, np.uint8)
     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(650, 630, 740, 690, cla, img, 0.8)
+    imgs_ = imgs_set_(800, 980, 940, 1020, cla, img, 0.9)
     if imgs_ is not None and imgs_ != False:
-        print("time_out", imgs_)
+        print("all_bogwan all_bogwan all_bogwan all_bogwan all_bogwan all_bogwan")
 
-    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\dungeon\\time_out_test.PNG"
-    img_array = np.fromfile(full_path, np.uint8)
-    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(650, 630, 740, 690, cla, img, 0.8)
-    if imgs_ is not None and imgs_ != False:
-        print("time_out_test", imgs_)
+
+    # full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\out_small_potion.PNG"
+    # img_array = np.fromfile(full_path, np.uint8)
+    # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    # imgs_ = imgs_set_(460, 950, 500, 1005, cla, img, 0.6)
+    # if imgs_ is not None and imgs_ != False:
+    #     v_.my_potion_check = 0
+    #     print("out_small_potion", imgs_)
+    # else:
+    #     full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\out_middle_potion.PNG"
+    #     img_array = np.fromfile(full_path, np.uint8)
+    #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    #     imgs_ = imgs_set_(460, 950, 500, 1005, cla, img, 0.6)
+    #     if imgs_ is not None and imgs_ != False:
+    #         v_.my_potion_check = 0
+    #         print("out_middle_potion", imgs_)
+    #     else:
+    #         v_.my_potion_check += 1
+    #         print("포션 없다", v_.my_potion_check)
+    #
+    #         juljun_potion_checking(cla)
+    #
+    #         if v_.my_potion_check > 3:
+    #             buy_potion(cla)
+    #
+    # full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\dungeon\\time_out.PNG"
+    # img_array = np.fromfile(full_path, np.uint8)
+    # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    # imgs_ = imgs_set_(650, 630, 740, 690, cla, img, 0.8)
+    # if imgs_ is not None and imgs_ != False:
+    #     print("time_out", imgs_)
+    #
+    # full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\dungeon\\time_out_test.PNG"
+    # img_array = np.fromfile(full_path, np.uint8)
+    # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    # imgs_ = imgs_set_(650, 630, 740, 690, cla, img, 0.8)
+    # if imgs_ is not None and imgs_ != False:
+    #     print("time_out_test", imgs_)
 
     # full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\my_maul_move_sangjum.PNG"
     # img_array = np.fromfile(full_path, np.uint8)
