@@ -9,9 +9,15 @@ import variable as v_
 
 
 def get_item_start(cla):
+
+    from action import juljun_off
+
     try:
         from action import clean_screen
         print("get_item_start")
+
+        juljun_off(cla)
+
         get_post(cla)
         set_collection(cla)
         boonhae(cla)

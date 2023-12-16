@@ -339,14 +339,15 @@ def go_worldmap_maul(cla):
 
 
 def buy_potion(cla):
+    import cv2
+    import numpy as np
+    from function_acaw import click_pos_reg, imgs_set_, click_pos_2, in_number_check, int_put_, text_check_get, \
+        change_number, drag_pos
+    from massenger import line_to_me
+    from action import clean_screen
+    from get_item import get_item_start
+    
     try:
-        import cv2
-        import numpy as np
-        from function_acaw import click_pos_reg, imgs_set_, click_pos_2, in_number_check, int_put_, text_check_get, change_number, drag_pos
-        from massenger import line_to_me
-        from action import clean_screen
-        from get_item import set_collection, boonhae, get_item_start
-
         # 절전모드일 경우 풀기
         full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\juljun\\juljun_ing.PNG"
         img_array = np.fromfile(full_path, np.uint8)
