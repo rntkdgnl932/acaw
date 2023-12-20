@@ -514,7 +514,7 @@ def buy_potion(cla):
                                 buy_per_ready = change_number(potion_per)
                                 print("buy_per_ready", buy_per_ready)
                                 print("buy_per_ready[0]", buy_per_ready[0])
-                                if int(buy_per_ready[0]) >= 6:
+                                if int(buy_per_ready[0]) >= 7:
                                     click_count = per_count - 1
                                     print("click_count", click_count)
                                     # per_ready = True
