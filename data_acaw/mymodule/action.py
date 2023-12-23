@@ -237,6 +237,7 @@ def menu_open(cla):
                             click_pos_2(900, 55, cla)
                         time.sleep(0.5)
                 else:
+                    juljun_off(cla)
                     clean_screen(cla)
 
 
