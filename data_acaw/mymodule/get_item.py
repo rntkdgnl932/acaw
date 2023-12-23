@@ -18,6 +18,8 @@ def get_item_start(cla):
 
         juljun_off(cla)
 
+        get_sohwan(cla)
+
         get_post(cla)
         set_collection(cla)
         boonhae(cla)
@@ -32,6 +34,212 @@ def get_item_start(cla):
         print(e)
         return 0
 
+
+def get_sohwan(cla):
+    try:
+        import cv2
+        import numpy as np
+        from function_acaw import click_pos_reg, imgs_set_, click_pos_2
+        from action import clean_screen, menu_open, bag_open
+
+
+
+        in_sohwan = False
+        in_sohwan_count = 0
+        while in_sohwan is False:
+            in_sohwan_count += 1
+            if in_sohwan_count > 7:
+                in_sohwan = True
+            # 우편 타이틀
+            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\title\\title_sangjum.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(700, 30, 930, 100, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("title_sangjum", imgs_)
+
+                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\gyohwanso_title.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(160, 70, 270, 130, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    time.sleep(0.2)
+
+                    for i in range(5):
+                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\sohwan_1.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(200, 130, 500, 840, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            break
+                        else:
+                            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\gyohwanso_click.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(0, 120, 140, 340, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                        time.sleep(0.5)
+
+                    for i in range(10):
+
+                        is_sohwan = False
+
+                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\sohwan_groa.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(200, 130, 500, 960, cla, img, 0.7)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            is_sohwan = True
+                        else:
+                            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\sohwan_job.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(200, 130, 500, 960, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                is_sohwan = True
+                            else:
+                                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\sohwan_talgut.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(200, 130, 500, 960, cla, img, 0.7)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    is_sohwan = True
+                        if is_sohwan == True:
+                            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\sohwan_confirm.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(480, 660, 640, 710, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                                for e in range(10):
+                                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\exit.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(330, 930, 660, 1030, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        break
+                                    else:
+                                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\bogi.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(330, 930, 660, 1030, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    time.sleep(0.5)
+                        else:
+                            in_sohwan = True
+
+                else:
+                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\gyohwanso_clicked.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(0, 120, 140, 340, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        for i in range(10):
+
+                            is_sohwan = False
+
+                            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\sohwan_groa.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(200, 130, 500, 960, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                is_sohwan = True
+                            else:
+                                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\sohwan_job.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(200, 130, 500, 960, cla, img, 0.7)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    is_sohwan = True
+                                else:
+                                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\sohwan_talgut.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(200, 130, 500, 960, cla, img, 0.7)
+                                    if imgs_ is not None and imgs_ != False:
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        is_sohwan = True
+                            if is_sohwan == True:
+                                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\sohwan_confirm.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(480, 660, 640, 710, cla, img, 0.7)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                                    for e in range(10):
+                                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\exit.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(330, 930, 660, 1030, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                                            break
+                                        else:
+                                            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\bogi.PNG"
+                                            img_array = np.fromfile(full_path, np.uint8)
+                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                            imgs_ = imgs_set_(330, 930, 660, 1030, cla, img, 0.8)
+                                            if imgs_ is not None and imgs_ != False:
+                                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        time.sleep(0.5)
+                            else:
+                                in_sohwan = True
+                    else:
+                        print("나타나지 않는 에러 발생")
+                        in_sohwan = True
+            else:
+                menu_open(cla)
+                time.sleep(0.2)
+
+                # 상점가기
+
+                for i in range(10):
+                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\title\\title_sangjum.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(700, 30, 930, 100, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        break
+                    else:
+                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\menu_sangjum.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(700, 30, 760, 90, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("menu_sangjum", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                    time.sleep(0.3)
+        for i in range(5):
+            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\title\\title_sangjum.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(700, 30, 930, 100, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                click_pos_2(920, 60, cla)
+            else:
+                clean_screen(cla)
+                break
+            time.sleep(0.5)
+
+
+
+
+
+    except Exception as e:
+        print(e)
+        return 0
 
 def get_post(cla):
     try:
@@ -90,6 +298,7 @@ def get_post(cla):
     except Exception as e:
         print(e)
         return 0
+
 
 def set_collection(cla):
     try:

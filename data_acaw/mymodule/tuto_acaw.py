@@ -179,10 +179,11 @@ def go_quest_ing(cla):
 #         return 0
 
 def quest_clear_click(cla):
+    import cv2
+    import numpy as np
+    from function_acaw import click_pos_reg, imgs_set_, click_pos_2
     try:
-        import cv2
-        import numpy as np
-        from function_acaw import click_pos_reg, imgs_set_, click_pos_2
+
         full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\tuto\\quest_clear_1.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)

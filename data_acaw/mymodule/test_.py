@@ -15,13 +15,13 @@ def go_test():
     import pyautogui
     import random
 
-    from function_acaw import imgs_set_, click_pos_reg
+    from function_acaw import imgs_set_, click_pos_reg, click_pos_2, drag_pos
     from dead_die import boohwal
-    from action import out_check, clean_screen, juljun_off, juljun_on, auto_on
+    from action import out_check, clean_screen, juljun_off, juljun_on, auto_on, bag_open
     from potion import buy_potion, maul_move_check, soongan_move_check, my_potion_check, juljun_potion_checking, chango_in
-    from get_item import set_collection, boonhae, get_post, daily_check
+    from get_item import set_collection, boonhae, get_post, daily_check, get_sohwan
     from jadong_acaw import jadong_in_spot_go, jadong_start
-
+    from sub_quest_acaw import request_complete_check
 
     print("test")
     cla = "one"
@@ -57,21 +57,16 @@ def go_test():
 
     # boonhae(cla)
 
-    chango_in(cla)
 
-    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\chango.PNG"
+    # 의뢰 완료
+    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\sohwan_1.PNG"
     img_array = np.fromfile(full_path, np.uint8)
     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(275, 80, 330, 130, cla, img, 0.8)
+    imgs_ = imgs_set_(200, 130, 500, 840, cla, img, 0.8)
     if imgs_ is not None and imgs_ != False:
-        print("chango chango chango chango chango chango chango chango chango chango chango chango")
+        print("sohwan_1", imgs_)
 
-    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\all_bogwan.PNG"
-    img_array = np.fromfile(full_path, np.uint8)
-    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(800, 980, 940, 1020, cla, img, 0.9)
-    if imgs_ is not None and imgs_ != False:
-        print("all_bogwan all_bogwan all_bogwan all_bogwan all_bogwan all_bogwan")
+    # request_complete_check(cla)
 
 
     # full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\out_small_potion.PNG"

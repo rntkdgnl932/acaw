@@ -389,7 +389,15 @@ def buy_potion(cla):
                 chango_in(cla)
                 # drag_pos(240, 100, 600, 100, cla)
                 time.sleep(0.3)
-                click_pos_2(425, 105, cla)
+
+                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\chango.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(200, 80, 330, 130, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    click_pos_reg(imgs_.x + 120, imgs_.y, cla)
+
+                # click_pos_2(425, 105, cla)
                 for i in range(10):
                     full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\jabhwa_title.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
@@ -775,7 +783,7 @@ def chango_in(cla):
                     full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\chango.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(275, 80, 330, 130, cla, img, 0.8)
+                    imgs_ = imgs_set_(200, 80, 330, 130, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         click_pos_reg(imgs_.x, imgs_.y, cla)
                         clicked = True
@@ -783,7 +791,7 @@ def chango_in(cla):
                         full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\chango_clicked.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(275, 80, 330, 130, cla, img, 0.8)
+                        imgs_ = imgs_set_(200, 80, 330, 130, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             click_pos_reg(imgs_.x, imgs_.y, cla)
                             clicked = True

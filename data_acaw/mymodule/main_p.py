@@ -49,6 +49,8 @@ from tuto_acaw import tuto_start
 from jadong_acaw import jadong_start
 from dungeon_acaw import dungeon_start
 from get_item import get_item_start
+from sub_quest_acaw import request_start
+from junjik_quest_acaw import junjik_quest_start
 
 from dead_die import dead_die_start
 from potion import my_potion_check
@@ -939,7 +941,7 @@ class FirstTab(QWidget):
         # 마을 의뢰
         self.com_group6 = QGroupBox('육성, 각종템받기, 거래소등록하기, 의뢰')
         cb6 = QComboBox()
-        list6 = ['스케쥴 선택', '각종템받기', '튜토육성', '거래소등록']
+        list6 = ['스케쥴 선택', '각종템받기', '튜토육성', '거래소등록', '의뢰퀘스트', '전직퀘스트']
         cb6.addItems(list6)
         vbox6 = QHBoxLayout()
         vbox6.addWidget(cb6)
@@ -3247,7 +3249,10 @@ class game_Playing(QThread):
 
                                 elif result_schedule_ == "튜토육성":
                                     tuto_start(v_.now_cla, result_schedule_)
-                                    print("start")
+                                elif result_schedule_ == "의뢰퀘스트":
+                                    request_start(v_.now_cla)
+                                elif result_schedule_ == "전직퀘스트":
+                                    junjik_quest_start(v_.now_cla)
                                 elif "자동" in result_schedule_:
                                     jadong_start(v_.now_cla, result_schedule_)
                                 elif "던전" in result_schedule_:
