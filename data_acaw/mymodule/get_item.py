@@ -133,6 +133,8 @@ def get_sohwan(cla):
                                         imgs_ = imgs_set_(330, 930, 660, 1030, cla, img, 0.8)
                                         if imgs_ is not None and imgs_ != False:
                                             click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        else:
+                                            click_pos_2(930, 60, cla)
                                     time.sleep(0.5)
                         else:
                             in_sohwan = True
@@ -246,7 +248,8 @@ def get_post(cla):
         import cv2
         import numpy as np
         from function_acaw import click_pos_reg, imgs_set_, click_pos_2
-        from action import clean_screen, menu_open, bag_open
+        from action import clean_screen, menu_open, bag_open, out_check
+        from potion import buy_potion
 
 
 
@@ -263,17 +266,59 @@ def get_post(cla):
             imgs_ = imgs_set_(820, 30, 900, 80, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 print("post_title", imgs_)
+
                 click_pos_2(860, 990, cla)
-                time.sleep(0.3)
-                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\daily_confirm_1.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(480, 600, 650, 650, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    click_pos_reg(imgs_.x, imgs_.y, cla)
-                click_pos_2(860, 990, cla)
-                time.sleep(0.3)
-                click_pos_2(915, 60, cla)
+                time.sleep(0.2)
+
+                _enough = True
+
+                for i in range(10):
+                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\not__enough__bag.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(240, 140, 700, 240, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        _enough = False
+                        break
+                    else:
+                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\not__enough__bag2.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(240, 140, 700, 240, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            _enough = False
+                            break
+                        else:
+                            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\daily_confirm_1.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(480, 600, 650, 650, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                    time.sleep(0.1)
+
+                for i in range(5):
+                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\post_title.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(820, 30, 900, 80, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_2(915, 60, cla)
+                    else:
+                        break
+                    time.sleep(0.5)
+
+                for i in range(10):
+                    result_out = out_check(cla)
+                    if result_out == True:
+                        break
+                    time.sleep(0.5)
+
+                if _enough == True:
+                    in_post = True
+                else:
+                    buy_potion(cla)
+
             else:
                 menu_open(cla)
                 time.sleep(0.2)
@@ -326,6 +371,7 @@ def set_collection(cla):
                 # 컬렉션 내부
                 in_collection = True
 
+                # click_pos_2(35, 200, cla)
 
                 for i in range(5):
                     x_reg = 100 * i
@@ -425,48 +471,118 @@ def daily_check(cla):
                 print("출석 daily_title 있다.", imgs_)
                 #출석 내부
 
-                in_daily2 = False
-                in_daily_count2 = 0
-                while in_daily2 is False:
-                    in_daily_count2 += 1
-                    if in_daily_count2 > 10:
-                        in_daily2 = True
-                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\check\\point.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(130, 80, 680, 110, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        print("데일리 포인트 있다.", imgs_)
-                        click_pos_reg(imgs_.x - 20, imgs_.y + 5, cla)
+                # full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\check\\point.PNG"
+                # img_array = np.fromfile(full_path, np.uint8)
+                # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                # imgs_ = imgs_set_(130, 80, 680, 110, cla, img, 0.8)
+                # if imgs_ is not None and imgs_ != False:
+                #     print("데일리 포인트 있다.", imgs_)
+                #     click_pos_reg(imgs_.x - 20, imgs_.y + 5, cla)
+                # else:
+                #     print("끝")
+                #     in_daily = True
 
+                # 100, 105 / 260 / 420 / 580
+
+                for i in range(4):
+
+                    x_reg = 100 + (i * 160)
+
+                    click_pos_2(x_reg, 105, cla)
+
+                    _enough = True
+
+                    complete_ = False
+                    for b in range(10):
+                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\get_daily_bosang.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(670, 720, 880, 780, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            break
+                        else:
+                            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\get_daily_bosang_complete.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(670, 720, 880, 780, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                complete_ = True
+                                break
+                        time.sleep(0.1)
+
+                    if complete_ == False:
                         full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\get_daily_bosang.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                         imgs_ = imgs_set_(670, 720, 880, 780, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             click_pos_reg(imgs_.x, imgs_.y, cla)
-                        else:
-                            in_daily2 = True
-                            click_pos_2(775, 755, cla)
+                            time.sleep(0.2)
+
+
+
+                            for e in range(10):
+                                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\not__enough__bag.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(240, 140, 700, 240, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    _enough = False
+                                    break
+                                else:
+                                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\not__enough__bag2.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(240, 140, 700, 240, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        _enough = False
+                                        break
+                                    else:
+                                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\touch_click.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(380, 600, 600, 700, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                                            time.sleep(0.3)
+                                            break
+                                time.sleep(0.1)
+                    if _enough == False:
+                        buy_potion(cla)
+                        break
                     else:
-                        print("끝")
-                        in_daily = True
+                        if i == 3:
+                            in_daily = True
                     time.sleep(0.4)
             else:
                 menu_open(cla)
                 time.sleep(0.2)
 
-                # 출석 포인트
-                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\check\\point.PNG"
+                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\menu_chulsuk.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(725, 180, 750, 210, cla, img, 0.8)
+                imgs_ = imgs_set_(700, 140, 930, 350, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    print("출석 포인트 있다.", imgs_)
-                    click_pos_reg(imgs_.x - 8, imgs_.y + 8, cla)
-                else:
-                    in_daily = True
-                    print("출석 포인트 없다.")
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    for i in range(10):
+                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\daily_title.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(760, 30, 840, 80, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            break
+                        time.sleep(0.2)
+                # # 출석 포인트
+                # full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\check\\point.PNG"
+                # img_array = np.fromfile(full_path, np.uint8)
+                # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                # imgs_ = imgs_set_(725, 180, 750, 210, cla, img, 0.8)
+                # if imgs_ is not None and imgs_ != False:
+                #     print("출석 포인트 있다.", imgs_)
+                #     click_pos_reg(imgs_.x - 8, imgs_.y + 8, cla)
+                # else:
+                #     in_daily = True
+                #     print("출석 포인트 없다.")
             time.sleep(0.3)
 
         clean_screen(cla)

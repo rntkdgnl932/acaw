@@ -12,6 +12,10 @@ black_screen_count = 0
 # 부활금지
 no_more_boohwal = False
 
+# 의뢰퀘스트
+request_go = False
+request_go_count = 0
+
 # 포션구매 관련
 now_ing_schedule = "none"
 

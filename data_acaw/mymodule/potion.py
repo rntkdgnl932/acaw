@@ -684,28 +684,36 @@ def buy_potion(cla):
                         if imgs_ is not None and imgs_ != False:
                             move_ = True
                         else:
-                            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\jab_confirm.PNG"
+                            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\my_random_move_sangjum2.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(480, 600, 650, 650, cla, img, 0.8)
+                            imgs_ = imgs_set_(690, 150, 940, 950, cla, img, 0.6)
                             if imgs_ is not None and imgs_ != False:
-                                print("jab_confirm", imgs_)
                                 move_ = True
-                                click_pos_reg(imgs_.x, imgs_.y, cla)
                             else:
-                                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\soongan_1.PNG"
+
+                                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\jab_confirm.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(0, 140, 240, 970, cla, img, 0.8)
+                                imgs_ = imgs_set_(480, 600, 650, 650, cla, img, 0.8)
                                 if imgs_ is not None and imgs_ != False:
-                                    print("soongan.......", imgs_)
+                                    print("jab_confirm", imgs_)
+                                    move_ = True
                                     click_pos_reg(imgs_.x, imgs_.y, cla)
-                                    time.sleep(0.5)
-                                    click_pos_2(320, 945, cla)
-                                    time.sleep(0.5)
-                                    click_pos_2(865, 995, cla)
-                                    time.sleep(0.5)
-                                time.sleep(0.3)
+                                else:
+                                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\soongan_1.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(0, 140, 240, 970, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("soongan.......", imgs_)
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        time.sleep(0.5)
+                                        click_pos_2(320, 945, cla)
+                                        time.sleep(0.5)
+                                        click_pos_2(865, 995, cla)
+                                        time.sleep(0.5)
+                                    time.sleep(0.3)
 
 
 

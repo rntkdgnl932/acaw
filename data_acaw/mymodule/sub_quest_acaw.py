@@ -7,7 +7,6 @@ import variable as v_
 
 sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder) + '/mymodule')
 
-request_go = False
 
 def sub_quest_start(cla):
     import numpy as np
@@ -39,7 +38,6 @@ def sub_quest_start(cla):
         return 0
 
 def request_start(cla):
-    global request_go
     import random
     import numpy as np
     import cv2
@@ -47,13 +45,14 @@ def request_start(cla):
     from action import bag_open, menu_open, auto_on, out_check
     from potion import my_potion_check, buy_potion
     from dead_die import dead_die_start
+    from schedule import myQuest_play_add
 
     try:
         print("request_start")
 
         dead_die_start(cla, "의뢰퀘스트")
 
-        if request_go == False:
+        if v_.request_go == False:
 
             request_start = False
             request_start_count = 0
@@ -156,7 +155,7 @@ def request_start(cla):
                                     result_out = out_check(cla)
                                     if result_out == True:
                                         request_start = True
-                                        request_go = True
+                                        v_.request_go = True
                                         break
                                     time.sleep(0.5)
 
@@ -290,15 +289,22 @@ def request_start(cla):
                         else:
                             time.sleep(0.3)
                             click_pos_2(x_reg, 625 + 100, cla)
-                            request_go = False
+                            v_.request_go = False
 
 
                     else:
                         break
                     time.sleep(0.5)
             else:
-                my_potion_check(cla)
-                auto_on(cla)
+                v_.request_go_count += 1
+
+                if v_.request_go_count > 300:
+                    v_.request_go_count = 0
+                    v_.request_go = False
+
+                else:
+                    my_potion_check(cla)
+                    auto_on(cla)
 
 
     except Exception as e:
@@ -347,13 +353,13 @@ def have_request(cla):
         return 0
 
 def request_complete_check(cla):
-    global request_go
     import random
     import numpy as np
     import cv2
     from function_acaw import imgs_set_, click_pos_reg, click_pos_2, drag_pos
     from action import bag_open, menu_open
     from potion import buy_potion
+    from schedule import myQuest_play_add
 
     try:
         print("request_complete_check")
@@ -477,7 +483,7 @@ def request_complete_check(cla):
                                     full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\sub_quest\\request\\slot_not_enough.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(420, 120, 580, 200, cla, img, 0.8)
+                                    imgs_ = imgs_set_(360, 120, 580, 200, cla, img, 0.8)
                                     if imgs_ is not None and imgs_ != False:
                                         print("슬롯 부족...")
                                         slot_enough = False
@@ -505,7 +511,7 @@ def request_complete_check(cla):
                             time.sleep(0.5)
                         else:
                             request_start = True
-                            request_go = False
+                            v_.request_go = False
                             break
                         time.sleep(0.3)
 
