@@ -261,7 +261,7 @@ def get_post(cla):
         import numpy as np
         from function_acaw import click_pos_reg, imgs_set_, click_pos_2
         from action import clean_screen, menu_open, bag_open, out_check
-        from potion import buy_potion
+        from potion import buy_potion, chango_in
 
 
 
@@ -329,7 +329,7 @@ def get_post(cla):
                 if _enough == True:
                     in_post = True
                 else:
-                    buy_potion(cla)
+                    chango_in(cla)
 
             else:
                 menu_open(cla)
