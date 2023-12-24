@@ -609,6 +609,7 @@ def boonhae(cla):
         import numpy as np
         from function_acaw import click_pos_reg, imgs_set_, click_pos_2
         from action import clean_screen, menu_open, bag_open
+        from potion import chango_in
 
         bag_open(cla)
         full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\clean_screen\\bag_1.PNG"
@@ -650,7 +651,7 @@ def boonhae(cla):
                         click_pos_2(820, 685, cla)
                         time.sleep(0.2)
                         for i in range(10):
-                            ull_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\daily_confirm_1.PNG"
+                            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\daily_confirm_1.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                             imgs_ = imgs_set_(480, 600, 660, 680, cla, img, 0.8)
@@ -661,7 +662,22 @@ def boonhae(cla):
 
                 else:
                     click_pos_reg(b_x_reg, b_y_reg, cla)
+                    time.sleep(0.1)
 
+                    enough_ = True
+
+                    for i in range(10):
+                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\not__enough__bag2.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(240, 140, 700, 240, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            enough_ = False
+                            break
+                        time.sleep(0.1)
+
+                    if enough_ == False:
+                        chango_in(cla)
 
 
     except Exception as e:
