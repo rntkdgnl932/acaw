@@ -393,7 +393,7 @@ def buy_potion(cla):
                 full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\chango.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(200, 80, 330, 130, cla, img, 0.8)
+                imgs_ = imgs_set_(200, 80, 330, 130, cla, img, 0.7)
                 if imgs_ is not None and imgs_ != False:
                     click_pos_reg(imgs_.x + 120, imgs_.y, cla)
 
@@ -800,7 +800,7 @@ def chango_in(cla):
                     full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\chango.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(200, 80, 330, 130, cla, img, 0.8)
+                    imgs_ = imgs_set_(200, 80, 330, 130, cla, img, 0.7)
                     if imgs_ is not None and imgs_ != False:
                         click_pos_reg(imgs_.x, imgs_.y, cla)
                         clicked = True
@@ -808,7 +808,7 @@ def chango_in(cla):
                         full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\chango_clicked.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(200, 80, 330, 130, cla, img, 0.8)
+                        imgs_ = imgs_set_(200, 80, 330, 130, cla, img, 0.75)
                         if imgs_ is not None and imgs_ != False:
                             click_pos_reg(imgs_.x, imgs_.y, cla)
                             clicked = True
