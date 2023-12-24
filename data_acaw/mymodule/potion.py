@@ -432,7 +432,7 @@ def buy_potion(cla):
                 else:
                     clean_screen(cla)
                     in_maul_count += 1
-                    if 2 < in_maul_count < 4:
+                    if in_maul_count < 4:
 
                         full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\common_grow\\maul_move_check.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
@@ -440,6 +440,15 @@ def buy_potion(cla):
                         imgs_ = imgs_set_(330, 940, 400, 1010, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             click_pos_2(370, 980, cla)
+                            for i in range(10):
+                                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\maul_.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(40, 70, 150, 150, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("도착")
+                                    break
+                                time.sleep(1)
 
 
 

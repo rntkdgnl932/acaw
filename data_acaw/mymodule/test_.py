@@ -24,7 +24,7 @@ def go_test():
     from sub_quest_acaw import request_complete_check
 
     print("test")
-    cla = "one"
+    cla = "two"
 
     plus = 0
 
@@ -57,16 +57,7 @@ def go_test():
 
     # boonhae(cla)
 
-    daily_check(cla)
-    # 의뢰 완료
-    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\get_daily_bosang_complete.PNG"
-    img_array = np.fromfile(full_path, np.uint8)
-    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(670, 720, 880, 780, cla, img, 0.8)
-    if imgs_ is not None and imgs_ != False:
-        print("get_daily_bosang get_daily_bosang get_daily_bosang", imgs_)
-    else:
-        print("nononononononononnoi")
+    get_sohwan(cla)
 
     # request_complete_check(cla)
 
