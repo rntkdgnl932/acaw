@@ -463,7 +463,7 @@ def daily_check(cla):
         import cv2
 
         from function_acaw import click_pos_2, imgs_set_, click_pos_reg
-        from potion import buy_potion
+        from potion import buy_potion, chango_in
         from action import out_check, clean_screen, menu_open
 
         print("daily_check")
@@ -560,7 +560,7 @@ def daily_check(cla):
                                             break
                                 time.sleep(0.1)
                     if _enough == False:
-                        buy_potion(cla)
+                        chango_in(cla)
                         break
                     else:
                         if i == 3:
