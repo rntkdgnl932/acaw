@@ -63,13 +63,20 @@ def clean_screen(cla):
             if result_out == True:
                 clean_ = True
             else:
-                # 소환 나가기
+                # 소환 나가기 or 모두보기
                 full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\exit.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(330, 930, 660, 1030, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     click_pos_reg(imgs_.x, imgs_.y, cla)
+                else:
+                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\bogi.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(330, 930, 660, 1030, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
 
                 # 일반적인 뒤로가기
                 full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\clean_screen\\back_1.PNG"
@@ -136,7 +143,7 @@ def clean_screen(cla):
                 full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\clean_screen\\skip.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(0, 0, 960, 1030, cla, img, 0.8)
+                imgs_ = imgs_set_(0, 0, 960, 970, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     print("skip", imgs_)
                     click_pos_reg(imgs_.x, imgs_.y, cla)

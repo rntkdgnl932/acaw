@@ -124,8 +124,20 @@ def get_sohwan(cla):
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                                     imgs_ = imgs_set_(330, 930, 660, 1030, cla, img, 0.8)
                                     if imgs_ is not None and imgs_ != False:
-                                        click_pos_reg(imgs_.x, imgs_.y, cla)
-                                        break
+                                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\skip_checked.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(810, 960, 860, 1020, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\exit.PNG"
+                                            img_array = np.fromfile(full_path, np.uint8)
+                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                            imgs_ = imgs_set_(330, 930, 660, 1030, cla, img, 0.8)
+                                            if imgs_ is not None and imgs_ != False:
+                                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                                break
+                                        else:
+                                            click_pos_2(860, 990, cla)
                                     else:
                                         full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\bogi.PNG"
                                         img_array = np.fromfile(full_path, np.uint8)
@@ -134,7 +146,7 @@ def get_sohwan(cla):
                                         if imgs_ is not None and imgs_ != False:
                                             click_pos_reg(imgs_.x, imgs_.y, cla)
                                         else:
-                                            click_pos_2(930, 60, cla)
+                                            click_pos_2(900, 55, cla)
                                     time.sleep(0.5)
                         else:
                             in_sohwan = True

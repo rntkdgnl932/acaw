@@ -24,7 +24,7 @@ def go_test():
     from sub_quest_acaw import request_complete_check
 
     print("test")
-    cla = "two"
+    cla = "one"
 
     plus = 0
 
