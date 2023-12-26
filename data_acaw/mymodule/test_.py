@@ -22,9 +22,10 @@ def go_test():
     from get_item import set_collection, boonhae, get_post, daily_check, get_sohwan
     from jadong_acaw import jadong_in_spot_go, jadong_start
     from sub_quest_acaw import request_complete_check
+    from star_upgrade_acaw import star_upgrade_start
 
     print("test")
-    cla = "one"
+    cla = "two"
 
     plus = 0
 
@@ -57,12 +58,15 @@ def go_test():
 
     # boonhae(cla)
 
-    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\not__enough__bag2.PNG"
-    img_array = np.fromfile(full_path, np.uint8)
-    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(240, 140, 700, 240, cla, img, 0.8)
-    if imgs_ is not None and imgs_ != False:
-        print("hi")
+    star_upgrade_start(cla)
+
+
+    # full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\star\\star_complete.PNG"
+    # img_array = np.fromfile(full_path, np.uint8)
+    # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    # imgs_ = imgs_set_(120, 290, 550, 800, cla, img, 0.8)
+    # if imgs_ is not None and imgs_ != False:
+    #     print("star_ready", imgs_)
 
     # request_complete_check(cla)
 
