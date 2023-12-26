@@ -126,6 +126,7 @@ def star_upgrade_start(cla):
                                                         time.sleep(0.5)
 
                                         time.sleep(0.5)
+                                time.sleep(0.2)
                         else:
                             # 신 -> 활자리
 
