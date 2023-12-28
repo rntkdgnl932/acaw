@@ -152,6 +152,8 @@ def star_up(cla):
 
                     for z in range(10):
 
+                        success_ = False
+
                         full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\star\\star_complete.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -191,9 +193,11 @@ def star_up(cla):
                                                           y_reg + 20, cla, img, 0.8)
                                         if imgs_ is not None and imgs_ != False:
                                             print("success : 완성", imgs_)
+                                            success_ = True
                                             break
                                         time.sleep(0.3)
-
+                        if success_ == True:
+                            break
                         time.sleep(0.5)
                     time.sleep(0.2)
         # else:
