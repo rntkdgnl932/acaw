@@ -296,15 +296,25 @@ def request_start(cla):
                         break
                     time.sleep(0.5)
             else:
-                v_.request_go_count += 1
 
-                if v_.request_go_count > 300:
+                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\maul_.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(40, 70, 150, 150, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
                     v_.request_go_count = 0
                     v_.request_go = False
-
                 else:
-                    my_potion_check(cla)
-                    auto_on(cla)
+
+                    v_.request_go_count += 1
+
+                    if v_.request_go_count > 300:
+                        v_.request_go_count = 0
+                        v_.request_go = False
+
+                    else:
+                        my_potion_check(cla)
+                        auto_on(cla)
 
 
     except Exception as e:
