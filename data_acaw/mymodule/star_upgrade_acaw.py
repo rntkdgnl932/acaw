@@ -46,7 +46,8 @@ def star_upgrade_start(cla):
                         y_click = 130 + (c * 50)
                         click_pos_2(35, y_click, cla)
                         time.sleep(0.5)
-                        star_up(cla)
+                        for i in range(2):
+                            star_up(cla)
 
                     if b == 1:
                         print("끝", b, c)
@@ -92,6 +93,8 @@ def star_up(cla):
             read_star = file.read().splitlines()
             # print("read_star", read_star)
 
+        where = "none"
+
         is_star = False
 
         for i in range(len(read_star)):
@@ -101,6 +104,7 @@ def star_up(cla):
             imgs_ = imgs_set_(760, 310, 900, 370, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 is_star = True
+                where = read_star[i]
                 print("어디?", read_star[i])
                 result_star = read_star[i].split("_")
                 print(result_star[0])
@@ -115,91 +119,99 @@ def star_up(cla):
                 read_star_2 = file.read().splitlines()
 
             # 각 좌표
-            for i in range(len(read_star_2)):
-                result_click_reg = read_star_2[i].split(",")
-                x_reg = int(result_click_reg[0])
-                y_reg = int(result_click_reg[1])
 
-                is_complete = False
+            for t in range(2):
+                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\star\\" + str(where) + ".PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(760, 310, 900, 370, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
 
-                # 이미 완성 되어 있는지 여부
-                for s in range(10):
-                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\star\\star_complete.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(x_reg - 20, y_reg - 20, x_reg + 20, y_reg + 20, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        print("star_complete", imgs_)
-                        is_complete = True
-                        break
-                    time.sleep(0.1)
+                    for i in range(len(read_star_2)):
+                        result_click_reg = read_star_2[i].split(",")
+                        x_reg = int(result_click_reg[0])
+                        y_reg = int(result_click_reg[1])
 
-                # 완성되지 않았다면 클릭 후 완성 시키기
-                if is_complete == False:
+                        is_complete = False
 
-
-                    for z in range(10):
-                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\star\\akium.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(700, 800, 760, 930, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            click_pos_2(860, 990, cla)
-                            break
-                        else:
-                            click_pos_2(x_reg, y_reg, cla)
-                        time.sleep(0.5)
-
-                    for z in range(10):
-
-                        success_ = False
-
-                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\star\\star_complete.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(x_reg - 20, y_reg - 20, x_reg + 20, y_reg + 20, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            print("star_complete!!!!!!!!!!!!!!!!", imgs_)
-                            break
-                        else:
-                            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\star\\fail.PNG"
+                        # 이미 완성 되어 있는지 여부
+                        for s in range(10):
+                            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\star\\star_complete.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(360, 60, 760, 200, cla, img, 0.8)
+                            imgs_ = imgs_set_(x_reg - 20, y_reg - 20, x_reg + 20, y_reg + 20, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
-                                for c in range(6):
-                                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\star\\akium.PNG"
-                                    img_array = np.fromfile(full_path, np.uint8)
-                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(700, 800, 760, 930, cla, img, 0.8)
-                                    if imgs_ is not None and imgs_ != False:
-                                        click_pos_2(860, 990, cla)
-                                        break
-                                    else:
-                                        click_pos_2(x_reg, y_reg, cla)
-                            else:
-                                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\star\\success.PNG"
+                                print("star_complete", imgs_)
+                                is_complete = True
+                                break
+                            time.sleep(0.1)
+
+                        # 완성되지 않았다면 클릭 후 완성 시키기
+                        if is_complete == False:
+
+
+                            for z in range(10):
+                                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\star\\akium.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(360, 60, 760, 200, cla, img, 0.8)
+                                imgs_ = imgs_set_(700, 800, 760, 930, cla, img, 0.8)
                                 if imgs_ is not None and imgs_ != False:
-                                    print("success", imgs_)
+                                    click_pos_2(860, 990, cla)
+                                    break
+                                else:
+                                    click_pos_2(x_reg, y_reg, cla)
+                                time.sleep(0.5)
 
-                                    for s in range(10):
-                                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\star\\star_complete.PNG"
+                            for z in range(10):
+
+                                success_ = False
+
+                                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\star\\star_complete.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(x_reg - 20, y_reg - 20, x_reg + 20, y_reg + 20, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("star_complete!!!!!!!!!!!!!!!!", imgs_)
+                                    break
+                                else:
+                                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\star\\fail.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(360, 60, 760, 200, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        for c in range(6):
+                                            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\star\\akium.PNG"
+                                            img_array = np.fromfile(full_path, np.uint8)
+                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                            imgs_ = imgs_set_(700, 800, 760, 930, cla, img, 0.8)
+                                            if imgs_ is not None and imgs_ != False:
+                                                click_pos_2(860, 990, cla)
+                                                break
+                                            else:
+                                                click_pos_2(x_reg, y_reg, cla)
+                                    else:
+                                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\star\\success.PNG"
                                         img_array = np.fromfile(full_path, np.uint8)
                                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                        imgs_ = imgs_set_(x_reg - 20, y_reg - 20, x_reg + 20,
-                                                          y_reg + 20, cla, img, 0.8)
+                                        imgs_ = imgs_set_(360, 60, 760, 200, cla, img, 0.8)
                                         if imgs_ is not None and imgs_ != False:
-                                            print("success : 완성", imgs_)
-                                            success_ = True
-                                            break
-                                        time.sleep(0.3)
-                        if success_ == True:
-                            break
-                        time.sleep(0.5)
-                    time.sleep(0.2)
+                                            print("success", imgs_)
+
+                                            for s in range(10):
+                                                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\star\\star_complete.PNG"
+                                                img_array = np.fromfile(full_path, np.uint8)
+                                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                imgs_ = imgs_set_(x_reg - 20, y_reg - 20, x_reg + 20,
+                                                                  y_reg + 20, cla, img, 0.8)
+                                                if imgs_ is not None and imgs_ != False:
+                                                    print("success : 완성", imgs_)
+                                                    success_ = True
+                                                    break
+                                                time.sleep(0.3)
+                                if success_ == True:
+                                    break
+                                time.sleep(0.5)
+                            time.sleep(0.2)
         # else:
         #     # 신 -> 활자리
         #
