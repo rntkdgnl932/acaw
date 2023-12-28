@@ -25,7 +25,7 @@ def go_test():
     from star_upgrade_acaw import star_upgrade_start
 
     print("test")
-    cla = "two"
+    cla = "one"
 
     plus = 0
 
@@ -38,6 +38,14 @@ def go_test():
         plus = 960 * 2
     elif cla == "four":
         plus = 960 * 3
+
+    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\star\\taecho_stone.PNG"
+    img_array = np.fromfile(full_path, np.uint8)
+    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    imgs_ = imgs_set_(760, 310, 900, 370, cla, img, 0.85)
+    if imgs_ is not None and imgs_ != False:
+        print("???")
+
 
     # for i in range(15):
     #     full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\worldmap_up.PNG"
@@ -58,7 +66,7 @@ def go_test():
 
     # boonhae(cla)
 
-    star_upgrade_start(cla)
+    # star_upgrade_start(cla)
 
 
     # full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\star\\star_complete.PNG"
