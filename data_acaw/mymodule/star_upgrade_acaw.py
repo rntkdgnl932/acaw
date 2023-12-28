@@ -12,7 +12,7 @@ def star_upgrade_start(cla):
     import cv2
     import numpy as np
     from function_acaw import click_pos_reg, imgs_set_, click_pos_2
-    from action import menu_open
+    from action import menu_open, clean_screen
     from potion import buy_potion
     from schedule import myQuest_play_add
     try:
@@ -54,6 +54,16 @@ def star_upgrade_start(cla):
                     if b == 1:
                         print("끝", b, c)
                         break
+                for i in range(5):
+                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\title\\title_star.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(700, 30, 900, 100, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        clean_screen(cla)
+                    else:
+                        break
+                    time.sleep(0.5)
 
             else:
                 menu_open(cla)
