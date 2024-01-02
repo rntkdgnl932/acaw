@@ -25,7 +25,7 @@ def go_test():
     from star_upgrade_acaw import star_upgrade_start
 
     print("test")
-    cla = "one"
+    cla = "two"
 
     plus = 0
 
@@ -39,7 +39,7 @@ def go_test():
     elif cla == "four":
         plus = 960 * 3
 
-    buy_potion(cla)
+    # buy_potion(cla)
 
     full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\sub_quest\\request\\request.PNG"
     img_array = np.fromfile(full_path, np.uint8)
@@ -88,7 +88,7 @@ def go_test():
 
     # boonhae(cla)
 
-    # star_upgrade_start(cla)
+    star_upgrade_start(cla)
 
 
     # full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\star\\star_complete.PNG"
