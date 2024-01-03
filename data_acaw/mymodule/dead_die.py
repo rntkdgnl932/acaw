@@ -193,6 +193,9 @@ def boohwal(cla, data):
                                 print("anymore_boggoo, 경험치", imgs_)
                                 boohwal_after_2 = True
                                 click_pos_2(175, 335, cla)
+
+                                if data == "튜토육성" or data == "일반육성":
+                                    myQuest_play_add(cla, data)
                             else:
                                 full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\dead_die\\confirm_1.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
@@ -213,10 +216,15 @@ def boohwal(cla, data):
                                         print("free_confirm_1", imgs_)
                                         click_pos_reg(imgs_.x, imgs_.y, cla)
                                     else:
-                                        boohwal_after_2 = True
-                                        click_pos_2(175, 335, cla)
-                                        if data == "튜토육성" or data == "일반육성":
-                                            myQuest_play_add(cla, data)
+                                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\dead_die\\not_free_confirm_1.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(80, 650, 200, 710, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("not_free_confirm_1", imgs_)
+                                            click_pos_reg(imgs_.x, imgs_.y, cla)
+
+
                             time.sleep(0.5)
                     time.sleep(0.5)
                     boohwal_after_3 = False
