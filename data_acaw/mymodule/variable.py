@@ -19,7 +19,7 @@ request_go_count = 0
 # 포션구매 관련
 now_ing_schedule = "none"
 
-my_potion_check = 0
+my_potion_checked = 0
 
 
 # 게임 및 폴더 관련

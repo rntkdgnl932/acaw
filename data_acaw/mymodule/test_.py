@@ -25,7 +25,7 @@ def go_test():
     from star_upgrade_acaw import star_upgrade_start
 
     print("test")
-    cla = "two"
+    cla = "one"
 
     plus = 0
 
@@ -48,14 +48,24 @@ def go_test():
     if imgs_ is not None and imgs_ != False:
         print("request", imgs_)
 
-    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\dungeon\\time_out.PNG"
+    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\out_small_potion_zero.PNG"
     img_array = np.fromfile(full_path, np.uint8)
     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(165, 630, 240, 690, cla, img, 0.8)
+    imgs_ = imgs_set_(460, 980, 505, 1005, cla, img, 0.8)
     if imgs_ is not None and imgs_ != False:
-        print("time_out", imgs_)
+        print("out_small_potion_zero", imgs_)
 
-    
+    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\out_middle_potion_zero.PNG"
+    img_array = np.fromfile(full_path, np.uint8)
+    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    imgs_ = imgs_set_(460, 980, 505, 1005, cla, img, 0.8)
+    if imgs_ is not None and imgs_ != False:
+        print("out_middle_potion_zero", imgs_)
+
+
+
+
+
 
     # for i in range(15):
     #     full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\worldmap_up.PNG"
@@ -76,7 +86,7 @@ def go_test():
 
     # boonhae(cla)
 
-    star_upgrade_start(cla)
+    # star_upgrade_start(cla)
 
 
     # full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\star\\star_complete.PNG"

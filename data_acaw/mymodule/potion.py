@@ -40,7 +40,7 @@ def my_potion_check(cla):
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(400, 950, 600, 1030, cla, img, 0.9)
             if imgs_ is not None and imgs_ != False:
-                v_.my_potion_check += 1
+                v_.my_potion_checked += 1
                 print("juljun_small_potion_zero", imgs_)
             else:
                 full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\juljun_middle_potion_zero.PNG"
@@ -48,12 +48,12 @@ def my_potion_check(cla):
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(400, 950, 600, 1030, cla, img, 0.9)
                 if imgs_ is not None and imgs_ != False:
-                    v_.my_potion_check += 1
+                    v_.my_potion_checked += 1
                     print("juljun_middle_potion_zero", imgs_)
                 else:
-                    v_.my_potion_check = 0
-                    print("포션 있다", v_.my_potion_check)
-            if v_.my_potion_check > 3:
+                    v_.my_potion_checked = 0
+                    print("포션 있다", v_.my_potion_checked)
+            if v_.my_potion_checked > 3:
 
                 juljun_off(cla)
 
@@ -70,23 +70,60 @@ def my_potion_check(cla):
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(460, 950, 500, 1005, cla, img, 0.6)
                 if imgs_ is not None and imgs_ != False:
-                    v_.my_potion_check = 0
-                    print("out_small_potion", imgs_)
+                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\out_small_potion_zero.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(460, 980, 505, 1005, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("out_small_potion_zero", imgs_)
+                        v_.my_potion_checked += 1
+                        print("포션 없다", v_.my_potion_checked)
+                    else:
+                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\out_middle_potion_zero.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(460, 980, 505, 1005, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("out_middle_potion_zero", imgs_)
+                            v_.my_potion_checked += 1
+                            print("포션 없다", v_.my_potion_checked)
+                        else:
+                            v_.my_potion_checked = 0
+                            print("out_middle_potion")
                 else:
                     full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\out_middle_potion.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(460, 950, 500, 1005, cla, img, 0.6)
+                    imgs_ = imgs_set_(460, 950, 500, 1005, cla, img, 0.7)
                     if imgs_ is not None and imgs_ != False:
-                        v_.my_potion_check = 0
-                        print("out_middle_potion", imgs_)
-                    else:
-                        v_.my_potion_check += 1
-                        print("포션 없다", v_.my_potion_check)
 
-                        if v_.my_potion_check > 10:
+                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\out_small_potion_zero.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(460, 980, 505, 1005, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("out_small_potion_zero", imgs_)
+                            v_.my_potion_checked += 1
+                            print("포션 없다", v_.my_potion_checked)
+                        else:
+                            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\out_middle_potion_zero.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(460, 980, 505, 1005, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("out_middle_potion_zero", imgs_)
+                                v_.my_potion_checked += 1
+                                print("포션 없다", v_.my_potion_checked)
+                            else:
+                                v_.my_potion_checked = 0
+                                print("out_middle_potion")
+                    else:
+                        v_.my_potion_checked += 1
+                        print("포션 없다", v_.my_potion_checked)
+
+                        if v_.my_potion_checked > 10:
                             buy_potion(cla)
-                        elif v_.my_potion_check > 5:
+                        elif v_.my_potion_checked > 5:
                             juljun_potion_checking(cla)
 
 
@@ -733,7 +770,7 @@ def buy_potion(cla):
 
         clean_screen(cla)
 
-        v_.my_potion_check = 0
+        v_.my_potion_checked = 0
 
 
     except Exception as e:
