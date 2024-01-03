@@ -441,23 +441,34 @@ def dungeon_in_spot_go(cla, where):
 
                     time.sleep(0.5)
 
+                    event_x = 240
+
                     # 해당 던전 스텝 활성화 하기전에 시간 남아있는지 확인하자
-                    if spot_[1] == "마다나":
+                    if spot_[1] == "이벤트":
                         drag_pos(100, 530, 700, 530, cla)
                         time.sleep(0.5)
                         full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\dungeon\\time_out.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(415, 630, 490, 690, cla, img, 0.8)
+                        imgs_ = imgs_set_(165, 630, 240, 690, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            dun_clear = True
+                    elif spot_[1] == "마다나":
+                        drag_pos(100, 530, 700, 530, cla)
+                        time.sleep(0.5)
+                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\dungeon\\time_out.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(415 + event_x, 630, 490 + event_x, 690, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             dun_clear = True
                     elif spot_[1] == "얼음잔":
-                        drag_pos(100, 530, 700, 530, cla)
+                        drag_pos(800, 530, 200, 530, cla)
                         time.sleep(0.5)
                         full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\dungeon\\time_out.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(650, 630, 740, 690, cla, img, 0.8)
+                        imgs_ = imgs_set_(375, 630, 440, 690, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             dun_clear = True
                     elif spot_[1] == "신전":
@@ -475,7 +486,7 @@ def dungeon_in_spot_go(cla, where):
                         full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\dungeon\\time_out.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(165, 630, 240, 690, cla, img, 0.8)
+                        imgs_ = imgs_set_(165 + event_x, 630, 240 + event_x, 690, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             dun_clear = True
                     elif spot_[1] == "도서관":

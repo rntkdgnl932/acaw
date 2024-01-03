@@ -956,7 +956,7 @@ class FirstTab(QWidget):
         self.dun_group_1 = QGroupBox('던전')
         dun_g1_name = QComboBox()
         # list4 = ['던전 선택', '일반_업보', '일반_지옥', '일반_죄악', '일반_저주', '특수_마족', '특수_아르카스', '파티_묘지']
-        dun_g1_list = ['던전 선택', '마다나', '얼음잔', '신전', '폐광', '도서관']
+        dun_g1_list = ['던전 선택', '마다나', '얼음잔', '신전', '폐광', '도서관', '이벤트']
         dun_g1_name.addItems(dun_g1_list)
 
         dun_g1_stair = QComboBox()

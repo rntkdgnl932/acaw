@@ -1,3 +1,4 @@
+이벤트_event
 마다나_madana
 얼음잔_ice
 신전_temple

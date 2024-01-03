@@ -48,26 +48,14 @@ def go_test():
     if imgs_ is not None and imgs_ != False:
         print("request", imgs_)
 
-    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\my_buff_power.PNG"
+    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\dungeon\\time_out.PNG"
     img_array = np.fromfile(full_path, np.uint8)
     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(690, 150, 940, 950, cla, img, 0.7)
+    imgs_ = imgs_set_(165, 630, 240, 690, cla, img, 0.8)
     if imgs_ is not None and imgs_ != False:
-        print("my_buff_power", imgs_)
+        print("time_out", imgs_)
 
-    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\my_buff_defense.PNG"
-    img_array = np.fromfile(full_path, np.uint8)
-    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(690, 150, 940, 950, cla, img, 0.7)
-    if imgs_ is not None and imgs_ != False:
-        print("my_buff_defense", imgs_)
-
-    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\my_buff_gaho.PNG"
-    img_array = np.fromfile(full_path, np.uint8)
-    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(690, 150, 940, 950, cla, img, 0.7)
-    if imgs_ is not None and imgs_ != False:
-        print("my_buff_gaho", imgs_)
+    
 
     # for i in range(15):
     #     full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\worldmap_up.PNG"
