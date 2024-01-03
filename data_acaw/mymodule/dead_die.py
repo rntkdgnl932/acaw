@@ -75,6 +75,30 @@ def is_die(cla):
             click_pos_reg(imgs_.x, imgs_.y, cla)
             die_ = True
 
+        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\dead_die\\boohwal_1.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(660, 30, 710, 80, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("boohwal_1", imgs_)
+            die_ = True
+        else:
+            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\dead_die\\boohwal_2.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(660, 30, 710, 80, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("boohwal_2", imgs_)
+                die_ = True
+            else:
+                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\dead_die\\boohwal_3.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(660, 30, 710, 80, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("boohwal_3", imgs_)
+                    die_ = True
+
         return die_
     except Exception as e:
         print(e)
