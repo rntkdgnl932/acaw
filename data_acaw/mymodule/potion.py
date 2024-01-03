@@ -896,7 +896,7 @@ def buy_buff(cla):
                             click_pos_2(865, 995, cla)
                             time.sleep(0.5)
                         time.sleep(0.3)
-            # 힘의 주문서 구매
+            # 가호의 주문서 구매
             move_ = False
             move_count = 0
             while move_ is False:
