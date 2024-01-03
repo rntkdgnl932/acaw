@@ -468,7 +468,7 @@ def dungeon_in_spot_go(cla, where):
                         full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\dungeon\\time_out.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(375, 630, 440, 690, cla, img, 0.8)
+                        imgs_ = imgs_set_(375, 630, 445, 690, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             dun_clear = True
                     elif spot_[1] == "신전":
@@ -477,7 +477,7 @@ def dungeon_in_spot_go(cla, where):
                         full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\dungeon\\time_out.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(625, 630, 700, 690, cla, img, 0.8)
+                        imgs_ = imgs_set_(620, 630, 700, 690, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             dun_clear = True
                     elif spot_[1] == "폐광":
