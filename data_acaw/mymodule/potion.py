@@ -503,6 +503,8 @@ def buy_potion(cla):
             time.sleep(0.5)
 
         # 마을 진입 후
+        x_reg = 130
+        y_reg = 250
         if again == False:
             isJabhwa = False
             while isJabhwa is False:
@@ -519,6 +521,9 @@ def buy_potion(cla):
                     imgs_ = imgs_set_(0, 140, 240, 970, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         print("40level", imgs_)
+
+                        y_reg = 190
+
                         print("작은 포션 사자")
                         full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\jabhwa_small_potion.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
@@ -550,6 +555,10 @@ def buy_potion(cla):
 
                             click_pos_reg(imgs_.x + 100, imgs_.y, cla)
                             time.sleep(0.5)
+
+                    # click
+                    click_pos_2(x_reg, y_reg, cla)
+                    time.sleep(0.2)
 
                     if v_.now_ing_schedule != "튜토육성":
 
