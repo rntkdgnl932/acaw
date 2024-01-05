@@ -947,6 +947,46 @@ def buy_buff(cla):
                             time.sleep(0.5)
                         time.sleep(0.3)
 
+            # 갈비꼬치 구매
+            move_ = False
+            move_count = 0
+            while move_ is False:
+                move_count += 1
+                if move_count > 5:
+                    move_ = True
+
+                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\my_buff_galbi.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(690, 150, 940, 950, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    move_ = True
+                else:
+
+                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\jab_confirm.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(480, 600, 650, 660, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("jab_confirm", imgs_)
+                        move_ = True
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                    else:
+                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\buff_galbi.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(0, 140, 80, 970, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("buff_gaho.......", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            time.sleep(0.5)
+                            click_pos_2(320, 950, cla)
+                            time.sleep(0.2)
+                            click_pos_2(320, 950, cla)
+                            time.sleep(0.2)
+                            click_pos_2(865, 995, cla)
+                            time.sleep(0.5)
+                        time.sleep(0.3)
 
 
 
