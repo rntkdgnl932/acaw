@@ -441,6 +441,7 @@ def buy_potion(cla):
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                     imgs_ = imgs_set_(750, 30, 840, 80, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
+                        in_maul = True
                         break
                     time.sleep(1)
                 # full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\jabhwa_1.PNG"

@@ -172,28 +172,51 @@ def request_start(cla):
 
                                     # 여기에 티켓 부족 넣기
                                     ticket_enough = True
+                                    support_ = True
                                     for t in range(10):
                                         full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\sub_quest\\request\\ticket_not_enough.PNG"
                                         img_array = np.fromfile(full_path, np.uint8)
                                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                        imgs_ = imgs_set_(360, 120, 580, 200, cla, img, 0.8)
+                                        imgs_ = imgs_set_(360, 120, 600, 200, cla, img, 0.8)
                                         if imgs_ is not None and imgs_ != False:
                                             print("티켓 부족...")
                                             ticket_enough = False
                                             break
-                                        time.sleep(0.1)
-                                    if ticket_enough == False:
-
-                                        for t in range(10):
-                                            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\sub_quest\\request\\ticket_not_enough.PNG"
+                                        else:
+                                            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\sub_quest\\request\\do_not_support.PNG"
                                             img_array = np.fromfile(full_path, np.uint8)
                                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                            imgs_ = imgs_set_(360, 120, 580, 200, cla, img, 0.8)
+                                            imgs_ = imgs_set_(360, 120, 600, 200, cla, img, 0.8)
                                             if imgs_ is not None and imgs_ != False:
-                                                print("의뢰 대기")
-                                            else:
+                                                print("지원하지 않음...")
+                                                support_ = False
                                                 break
-                                            time.sleep(0.5)
+                                        time.sleep(0.1)
+                                    if ticket_enough == False or support_ == False:
+
+                                        if ticket_enough == False:
+                                            for t in range(10):
+                                                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\sub_quest\\request\\ticket_not_enough.PNG"
+                                                img_array = np.fromfile(full_path, np.uint8)
+                                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                imgs_ = imgs_set_(360, 120, 600, 200, cla, img, 0.8)
+                                                if imgs_ is not None and imgs_ != False:
+                                                    print("의뢰 대기 1")
+                                                else:
+                                                    break
+                                                time.sleep(0.5)
+                                        elif support_ == False:
+                                            for t in range(10):
+                                                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\sub_quest\\request\\do_not_support.PNG"
+                                                img_array = np.fromfile(full_path, np.uint8)
+                                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                imgs_ = imgs_set_(360, 120, 600, 200, cla, img, 0.8)
+                                                if imgs_ is not None and imgs_ != False:
+                                                    print("의뢰 대기 2")
+                                                else:
+                                                    break
+                                                time.sleep(0.5)
+
 
                                         for t in range(10):
                                             # 확인 넣기
