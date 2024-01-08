@@ -570,7 +570,8 @@ def buy_potion(cla):
                             for i in range(3):
                                 potion_per = text_check_get(331 - i, 975, 390, 990, cla)
                                 print("potion_per?", potion_per)
-                                buy_ready = in_number_check(potion_per)
+                                buy_ready2 = change_number(potion_per)
+                                buy_ready = in_number_check(buy_ready2)
                                 if buy_ready == True:
                                     break
                                 time.sleep(0.2)
