@@ -512,7 +512,7 @@ def buy_potion(cla):
                 full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\jabhwa_title.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(750, 30, 840, 80, cla, img, 0.8)
+                imgs_ = imgs_set_(750, 30, 840, 80, cla, img, 0.7)
                 if imgs_ is not None and imgs_ != False:
                     print("jabhwa_title", imgs_)
                     # 포션 구매
@@ -529,7 +529,7 @@ def buy_potion(cla):
                         full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\jabhwa_small_potion.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(0, 140, 240, 970, cla, img, 0.8)
+                        imgs_ = imgs_set_(0, 140, 240, 970, cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
                             print("jabhwa_small_potion", imgs_)
 
@@ -547,7 +547,7 @@ def buy_potion(cla):
                         full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\jabhwa_middle_potion.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(0, 140, 240, 970, cla, img, 0.7)
+                        imgs_ = imgs_set_(0, 140, 240, 970, cla, img, 0.65)
                         if imgs_ is not None and imgs_ != False:
                             print("jabhwa_middle_potion", imgs_)
 
