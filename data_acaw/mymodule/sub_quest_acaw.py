@@ -236,16 +236,28 @@ def request_start(cla):
                             time.sleep(0.5)
 
                 else:
-                    menu_open(cla)
-                    click_pos_2(860, 60, cla)
-                    for i in range(10):
-                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\title\\title_quest.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(690, 30, 940, 670, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            break
-                        time.sleep(0.2)
+                    ran_result = random.randint(1, 5)
+
+                    x_reg = 330 + (int(ran_result) * 50)
+
+                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\sub_quest\\request\\random_click.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(340, 590, 620, 660, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_2(x_reg, 625, cla)
+
+                    else:
+                        menu_open(cla)
+                        click_pos_2(860, 60, cla)
+                        for i in range(10):
+                            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\title\\title_quest.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(690, 30, 940, 670, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                break
+                            time.sleep(0.2)
         else:
             full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\tuto\\quest_clear_1.PNG"
             img_array = np.fromfile(full_path, np.uint8)
