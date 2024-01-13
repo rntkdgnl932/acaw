@@ -25,7 +25,7 @@ def go_test():
     from star_upgrade_acaw import star_upgrade_start
 
     print("test")
-    cla = "two"
+    cla = "one"
 
     plus = 0
 
@@ -41,24 +41,12 @@ def go_test():
 
     # buy_potion(cla)
 
-    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\sub_quest\\request\\request.PNG"
+    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\sub_quest\\request\\random_click.PNG"
     img_array = np.fromfile(full_path, np.uint8)
     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(690, 355, 940, 670, cla, img, 0.8)
+    imgs_ = imgs_set_(340, 590, 410, 660, cla, img, 0.7)
     if imgs_ is not None and imgs_ != False:
-        print("request", imgs_)
-
-    drag_pos(800, 530, 200, 530, cla)
-    time.sleep(0.5)
-    drag_pos(800, 530, 200, 530, cla)
-    time.sleep(0.5)
-
-    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\dungeon\\time_out.PNG"
-    img_array = np.fromfile(full_path, np.uint8)
-    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(375, 630, 445, 690, cla, img, 0.8)
-    if imgs_ is not None and imgs_ != False:
-        print(" time_out", imgs_)
+        print(" random_click", imgs_)
 
 
 
