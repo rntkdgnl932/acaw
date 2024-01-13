@@ -266,7 +266,7 @@ def request_start(cla):
                     full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\sub_quest\\request\\random_click.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(340, 590, 410, 660, cla, img, 0.8)
+                    imgs_ = imgs_set_(340, 590, 410, 660, cla, img, 0.7)
                     if imgs_ is not None and imgs_ != False:
                         break
                     time.sleep(0.5)
@@ -275,7 +275,7 @@ def request_start(cla):
                     full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\sub_quest\\request\\random_click.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(340, 590, 620, 660, cla, img, 0.8)
+                    imgs_ = imgs_set_(340, 590, 620, 660, cla, img, 0.7)
                     if imgs_ is not None and imgs_ != False:
 
                         click_pos_2(x_reg, 625, cla)
@@ -497,7 +497,7 @@ def request_complete_check(cla):
                                 full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\sub_quest\\request\\random_click.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(340, 590, 410, 660, cla, img, 0.8)
+                                imgs_ = imgs_set_(340, 590, 410, 660, cla, img, 0.7)
                                 if imgs_ is not None and imgs_ != False:
                                     break
                                 time.sleep(0.3)
@@ -505,7 +505,7 @@ def request_complete_check(cla):
                             full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\sub_quest\\request\\random_click.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(340, 590, 620, 660, cla, img, 0.8)
+                            imgs_ = imgs_set_(340, 590, 620, 660, cla, img, 0.7)
                             if imgs_ is not None and imgs_ != False:
                                 click_pos_2(x_reg, 625, cla)
                                 time.sleep(0.1)
