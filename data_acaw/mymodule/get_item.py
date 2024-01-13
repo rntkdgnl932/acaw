@@ -22,6 +22,9 @@ def get_item_start(cla):
 
         get_post(cla)
         set_collection(cla)
+
+        set_sowon_water(cla)
+
         boonhae(cla)
         daily_check(cla)
 
@@ -377,7 +380,7 @@ def set_collection(cla):
             full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\collection_title.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(800, 30, 900, 80, cla, img, 0.8)
+            imgs_ = imgs_set_(700, 30, 900, 100, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 print("collection_title", imgs_)
                 # 컬렉션 내부
@@ -446,6 +449,120 @@ def set_collection(cla):
                 else:
                     print("컬렉션 포인트 없다.")
                     in_collection = True
+            time.sleep(0.3)
+
+        clean_screen(cla)
+
+
+
+
+    except Exception as e:
+        print(e)
+        return 0
+
+def set_sowon_water(cla):
+    try:
+        import os
+        import cv2
+        import numpy as np
+        from function_acaw import click_pos_reg, imgs_set_, click_pos_2
+        from action import menu_open, clean_screen
+
+
+
+        in_sowon = False
+        in_sowon_count = 0
+        while in_sowon is False:
+            in_sowon_count += 1
+            if in_sowon_count > 7:
+                in_sowon = True
+            # 샘물 타이틀
+            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\title\\sowon_title.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(700, 30, 900, 100, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("sowon_title", imgs_)
+                # 샘물 내부
+
+
+                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\get_water.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(700, 100, 850, 150, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    in_sowon = True
+
+                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\high_class_not_checked.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(700, 890, 770, 930, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        for i in range(10):
+                            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\high_class_checked.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(700, 890, 770, 930, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                break
+                            time.sleep(0.1)
+                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\high_class_checked.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(700, 890, 770, 930, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\get_extract.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(750, 920, 890, 970, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            for i in range(10):
+                                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\extract_confirm.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(480, 620, 640, 680, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    break
+                                time.sleep(0.3)
+
+                else:
+                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\get_water_click.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(700, 190, 940, 240, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        for i in range(10):
+                            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\get_water.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(700, 100, 850, 150, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                break
+                            time.sleep(0.2)
+
+            else:
+                menu_open(cla)
+                time.sleep(0.2)
+
+                # 컬렉션 포인트
+                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\get_item\\menu_sowon.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(700, 240, 940, 360, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    for i in range(10):
+                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\title\\sowon_title.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(700, 30, 900, 100, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            break
+                        time.sleep(0.3)
             time.sleep(0.3)
 
         clean_screen(cla)

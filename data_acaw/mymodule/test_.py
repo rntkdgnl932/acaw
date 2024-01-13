@@ -19,7 +19,7 @@ def go_test():
     from dead_die import boohwal
     from action import out_check, clean_screen, juljun_off, juljun_on, auto_on, bag_open
     from potion import buy_potion, maul_move_check, soongan_move_check, my_potion_check, juljun_potion_checking, chango_in, buy_buff
-    from get_item import set_collection, boonhae, get_post, daily_check, get_sohwan
+    from get_item import set_collection, boonhae, get_post, daily_check, get_sohwan, set_sowon_water
     from jadong_acaw import jadong_in_spot_go, jadong_start
     from sub_quest_acaw import request_complete_check
     from star_upgrade_acaw import star_upgrade_start
@@ -39,14 +39,14 @@ def go_test():
     elif cla == "four":
         plus = 960 * 3
 
-    # buy_potion(cla)
+    set_sowon_water(cla)
 
-    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\sub_quest\\request\\random_click.PNG"
+    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\tuto\\confirm_2.PNG"
     img_array = np.fromfile(full_path, np.uint8)
     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(340, 590, 410, 660, cla, img, 0.7)
+    imgs_ = imgs_set_(0, 0, 960, 1030, cla, img, 0.8)
     if imgs_ is not None and imgs_ != False:
-        print(" random_click", imgs_)
+        print("confirm_2", imgs_)
 
 
 
