@@ -53,7 +53,7 @@ from sub_quest_acaw import request_start
 from junjik_quest_acaw import junjik_quest_start
 
 from dead_die import dead_die_start
-from potion import my_potion_check
+from potion import my_potion_check, buy_buff_start
 
 
 from stop_event18 import _stop_please
@@ -3245,6 +3245,7 @@ class game_Playing(QThread):
 
                                 if result_schedule_ == "각종템받기":
                                     get_item_start(v_.now_cla)
+                                    buy_buff_start(cla)
                                     myQuest_play_add(v_.now_cla, "각종템받기")
 
                                 elif result_schedule_ == "튜토육성":

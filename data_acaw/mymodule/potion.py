@@ -773,7 +773,7 @@ def buy_potion(cla):
                                     time.sleep(0.3)
                     # 버프 구매
 
-                    buy_buff(cla)
+                    # buy_buff(cla)
 
 
                 time.sleep(0.3)
@@ -788,6 +788,148 @@ def buy_potion(cla):
         print(e)
         return 0
 
+
+def buy_buff_start(cla):
+    import cv2
+    import numpy as np
+    from function_acaw import click_pos_reg, imgs_set_, click_pos_2, in_number_check, int_put_, text_check_get, \
+        change_number, drag_pos
+    from massenger import line_to_me
+    from action import clean_screen
+    from get_item import get_item_start
+
+    try:
+        # 절전모드일 경우 풀기
+        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\juljun\\juljun_ing.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(400, 400, 600, 600, cla, img, 0.7)
+        if imgs_ is not None and imgs_ != False:
+            drag_pos(480, 520, 800, 520, cla)
+
+        close_to_potion = False
+        close_to_potion_count = 0
+        while close_to_potion is False:
+            close_to_potion_count += 1
+            if close_to_potion_count > 10:
+                close_to_potion = True
+            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\close_to_potion.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(880, 300, 940, 360, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                click_pos_reg(imgs_.x, imgs_.y, cla)
+            else:
+                close_to_potion = True
+
+        # 마을 도착 여부
+        in_maul = False
+        again = False
+        in_maul_count = 0
+        dangerous = 0
+        while in_maul is False:
+            full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\maul_.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(40, 70, 150, 150, cla, img, 0.7)
+            if imgs_ is not None and imgs_ != False:
+                print("maul______", imgs_)
+
+
+                chango_in(cla)
+                time.sleep(0.3)
+
+                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\chango.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(200, 80, 330, 130, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    click_pos_reg(imgs_.x + 120, imgs_.y, cla)
+
+                # click_pos_2(425, 105, cla)
+                for i in range(10):
+                    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\jabhwa_title.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(750, 30, 840, 80, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        in_maul = True
+                        break
+                    time.sleep(1)
+                # full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\jabhwa_1.PNG"
+                # img_array = np.fromfile(full_path, np.uint8)
+                # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                # imgs_ = imgs_set_(20, 80, 300, 200, cla, img, 0.8)
+                # if imgs_ is not None and imgs_ != False:
+                #     print("jabhwa_111111", imgs_)
+                #     click_pos_reg(imgs_.x, imgs_.y, cla)
+                # else:
+                #     full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\jabhwa_2.PNG"
+                #     img_array = np.fromfile(full_path, np.uint8)
+                #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                #     imgs_ = imgs_set_(20, 80, 300, 200, cla, img, 0.8)
+                #     if imgs_ is not None and imgs_ != False:
+                #         print("jabhwa_222222", imgs_)
+                #         click_pos_reg(imgs_.x, imgs_.y, cla)
+            else:
+                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\jabhwa_title.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(750, 30, 840, 80, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("jabhwa_title!!!!!!!!!!", imgs_)
+                    in_maul = True
+                else:
+                    clean_screen(cla)
+                    in_maul_count += 1
+                    if in_maul_count < 4:
+
+                        full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\common_grow\\maul_move_check.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(330, 940, 400, 1010, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_2(370, 980, cla)
+                            for i in range(10):
+                                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\potion\\maul_.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(40, 70, 150, 150, cla, img, 0.7)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("도착")
+                                    break
+                                time.sleep(1)
+
+
+
+                        else:
+                            maul_move_check(cla)
+
+                    if in_maul_count > 10:
+                        in_maul_count = 0
+                        dangerous += 1
+                        if dangerous > 1:
+                            print("stop!!!")
+                            in_maul = True
+                            again = True
+                            line_to_me(cla, "아키 마을 못 가고 있다")
+            time.sleep(0.5)
+
+        # 마을 진입 후
+        x_reg = 130
+        y_reg = 250
+        if again == False:
+            buy_buff(cla)
+        v_.jadong_on = False
+
+        clean_screen(cla)
+
+        v_.my_potion_checked = 0
+
+
+    except Exception as e:
+        print(e)
+        return 0
 
 def buy_buff(cla):
     import cv2
