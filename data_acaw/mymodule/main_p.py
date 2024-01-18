@@ -3256,7 +3256,10 @@ class game_Playing(QThread):
                                 elif "자동" in result_schedule_:
                                     jadong_start(v_.now_cla, result_schedule_)
                                 elif "던전" in result_schedule_:
-                                    dungeon_start(v_.now_cla, result_schedule_)
+                                    if "이벤트" in result_schedule_:
+                                        myQuest_play_add(v_.now_cla, result_schedule_)
+                                    else:
+                                        dungeon_start(v_.now_cla, result_schedule_)
                                 elif "바다" in result_schedule_:
                                     dungeon_start(v_.now_cla, result_schedule_)
                                 elif "렐름" in result_schedule_:

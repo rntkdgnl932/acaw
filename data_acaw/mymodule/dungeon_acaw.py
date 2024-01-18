@@ -441,7 +441,8 @@ def dungeon_in_spot_go(cla, where):
 
                     time.sleep(0.5)
 
-                    event_x = 240
+                    # event_x = 240
+                    event_x = 0
 
                     # 해당 던전 스텝 활성화 하기전에 시간 남아있는지 확인하자
                     if spot_[1] == "이벤트":
