@@ -3245,7 +3245,7 @@ class game_Playing(QThread):
 
                                 if result_schedule_ == "각종템받기":
                                     get_item_start(v_.now_cla)
-                                    buy_buff_start(cla)
+                                    buy_buff_start(v_.now_cla)
                                     myQuest_play_add(v_.now_cla, "각종템받기")
 
                                 elif result_schedule_ == "튜토육성":
