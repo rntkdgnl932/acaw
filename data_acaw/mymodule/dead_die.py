@@ -28,6 +28,11 @@ def dead_die_start(cla, data):
 
                 boohwal(cla, data)
                 buy_potion(cla)
+            elif data == "전직퀘스트":
+                myQuest_play_add(cla, data)
+
+                boohwal(cla, data)
+                buy_potion(cla)
             else:
                 buy_potion(cla)
                 boohwal(cla, data)
