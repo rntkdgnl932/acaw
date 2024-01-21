@@ -111,7 +111,7 @@ def go_quest_ing(cla):
             full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\tuto\\go_quest.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(640, 70, 690, 120, cla, img, 0.8)
+            imgs_ = imgs_set_(640, 70, 690, 150, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 print("go_quest", imgs_)
                 full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\check\\lv_point.PNG"
@@ -165,7 +165,7 @@ def go_quest_ing(cla):
 #             full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\tuto\\go_quest.PNG"
 #             img_array = np.fromfile(full_path, np.uint8)
 #             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-#             imgs_ = imgs_set_(640, 70, 690, 120, cla, img, 0.8)
+#             imgs_ = imgs_set_(640, 70, 690, 150, cla, img, 0.8)
 #             if imgs_ is not None and imgs_ != False:
 #                 print("go_quest", imgs_)
 #                 ing_ = True
