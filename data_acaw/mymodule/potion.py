@@ -558,8 +558,12 @@ def buy_potion(cla):
                             time.sleep(0.5)
 
                     # click
-                    click_pos_2(x_reg, y_reg, cla)
-                    time.sleep(0.2)
+                    if x_reg == 130:
+                        click_pos_2(x_reg, y_reg, cla)
+                        time.sleep(0.2)
+                    else:
+                        click_pos_reg(imgs_.x + 100, imgs_.y, cla)
+                        time.sleep(0.2)
 
                     if v_.now_ing_schedule != "튜토육성":
 
