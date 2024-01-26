@@ -91,6 +91,18 @@ def junjik_quest_start(cla):
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                         imgs_ = imgs_set_(780, 960, 940, 1015, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
+
+                            for t in range(10):
+                                full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\sub_quest\\request\\ticket_not_enough.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(360, 120, 600, 200, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("티켓 부족...")
+                                    not_have_request = True
+                                    break
+                                time.sleep(0.1)
+
                             break
                         else:
                             not_have_request = True
