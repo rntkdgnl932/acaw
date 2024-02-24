@@ -154,7 +154,7 @@ def jadong_in_spot_check(cla, where):
             full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\jadong_juljun_list\\" + str(spot_name) + ".PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(100, 920, 200, 980, cla, img, 0.8)
+            imgs_ = imgs_set_(100, 920, 220, 980, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 print("juljun_jadong_spot", spot_name)
                 spot_true = True
@@ -180,7 +180,7 @@ def jadong_in_spot_check(cla, where):
                     full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\jadong_out_list\\" + str(spot_name) + ".PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(30, 90, 200, 130, cla, img, 0.8)
+                    imgs_ = imgs_set_(30, 90, 220, 130, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         print("out_jadong_spot", spot_name)
                         spot_true = True

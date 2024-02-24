@@ -15,7 +15,7 @@ def go_test():
     import pyautogui
     import random
 
-    from function_acaw import imgs_set_, click_pos_reg, click_pos_2, drag_pos
+    from function_acaw import imgs_set_, click_pos_reg, click_pos_2, drag_pos, text_check_get, in_number_check, int_put_
     from dead_die import boohwal
     from action import out_check, clean_screen, juljun_off, juljun_on, auto_on, bag_open
     from potion import buy_potion, maul_move_check, soongan_move_check, my_potion_check, juljun_potion_checking, chango_in, buy_buff_start
@@ -23,6 +23,8 @@ def go_test():
     from jadong_acaw import jadong_in_spot_go, jadong_start
     from sub_quest_acaw import request_complete_check
     from star_upgrade_acaw import star_upgrade_start
+    from property_acaw import my_property_upload
+    from auction_acaw import auction_start, auction_list
 
     print("test")
     cla = "one"
@@ -39,7 +41,42 @@ def go_test():
     elif cla == "four":
         plus = 960 * 3
 
-    buy_buff_start(cla)
+    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\jadong_juljun_list\\marianoplebinminga.PNG"
+    img_array = np.fromfile(full_path, np.uint8)
+    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    imgs_ = imgs_set_(100, 920, 220, 980, cla, img, 0.8)
+    if imgs_ is not None and imgs_ != False:
+        print("juljun_jadong_spot")
+
+    # read_many = text_check_get(575, 386, 630, 407, cla)
+    # print("read_many", read_many)
+
+    # read_dia1 = text_check_get(763, 467, 835, 489, cla)
+    # print("read_dia1", read_dia1)
+    #
+    # read_dia2 = text_check_get(763, 509, 835, 528, cla)
+    # print("read_dia2", read_dia2)
+    #
+    # digit_ready1 = in_number_check(read_dia1)
+    # print("digit_ready1", digit_ready1)
+    #
+    # digit_ready2 = in_number_check(read_dia1)
+    # print("digit_ready2", digit_ready2)
+    #
+    # if digit_ready1 == True and digit_ready2 == True:
+    #     if digit_ready1 > digit_ready2:
+    #         sell_price = read_dia2
+    #     else:
+    #         sell_price = read_dia1
+    # elif digit_ready1 == True:
+    #     sell_price = read_dia1
+    # elif digit_ready2 == True:
+    #     sell_price = read_dia2
+    # else:
+    #     sell_price = 0
+    #
+    # print("sell_price", sell_price)
+
 
     full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\tuto\\confirm_2.PNG"
     img_array = np.fromfile(full_path, np.uint8)
