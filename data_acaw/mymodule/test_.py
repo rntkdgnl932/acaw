@@ -25,6 +25,7 @@ def go_test():
     from star_upgrade_acaw import star_upgrade_start
     from property_acaw import my_property_upload
     from auction_acaw import auction_start, auction_list
+    from sowon import sowon_start
 
     print("test")
     cla = "one"
@@ -41,12 +42,14 @@ def go_test():
     elif cla == "four":
         plus = 960 * 3
 
-    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\jadong\\jadong_juljun_list\\marianoplebinminga.PNG"
+    sowon_start(cla)
+
+    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\sowon\\gogb_rare.PNG"
     img_array = np.fromfile(full_path, np.uint8)
     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(100, 920, 220, 980, cla, img, 0.8)
+    imgs_ = imgs_set_(70, 125, 155, 500, cla, img, 0.8)
     if imgs_ is not None and imgs_ != False:
-        print("juljun_jadong_spot")
+        print("gogb_rare", imgs_)
 
     # read_many = text_check_get(575, 386, 630, 407, cla)
     # print("read_many", read_many)
@@ -76,16 +79,6 @@ def go_test():
     #     sell_price = 0
     #
     # print("sell_price", sell_price)
-
-
-    full_path = "c:\\my_games\\acaw\\data_acaw\\imgs\\tuto\\confirm_2.PNG"
-    img_array = np.fromfile(full_path, np.uint8)
-    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(0, 0, 960, 1030, cla, img, 0.8)
-    if imgs_ is not None and imgs_ != False:
-        print("confirm_2", imgs_)
-
-
 
 
 

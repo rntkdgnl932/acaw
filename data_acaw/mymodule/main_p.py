@@ -147,7 +147,7 @@ class MyApp(QDialog):
         # pyinstaller --hidden-import PyQt5 --hidden-import pyserial --hidden-import requests --hidden-import chardet --add-data="C:\\my_games\\game_folder\\data_game;./data_game" --name game_folder -i="game_folder_macro.ico" --add-data="game_folder_macro.ico;./" --icon="game_folder_macro.ico" --paths "C:\Users\1_S_3\AppData\Local\Programs\Python\Python311\Lib\site-packages\cv2" main.py
 
         # self.setGeometry(1000 + 960 + 960, 300, 900, 600)
-        self.setGeometry(20 + 960, 200, 900, 700)
+        self.setGeometry(20, 200, 900, 700)
         self.show()
     def my_title(self):
         self.setWindowTitle( v_.this_game + "(ver " + version + ")")
